@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saud Ahmed Memon | Full-Stack Developer & CS Student</title>
+  <meta name="description" content="Portfolio of Saud Ahmed Memon — Full-Stack Developer, MERN Stack Engineer, and Computer Science student at SZABIST Islamabad. Explore projects, skills, and experience." />
+  <meta name="keywords" content="Saud Ahmed Memon, Full Stack Developer, MERN Stack, React.js, Node.js, AWS, Islamabad, Pakistan" />
+  <meta property="og:title" content="Saud Ahmed Memon | Full-Stack Developer" />
+  <meta property="og:description" content="CS Student & Full-Stack Developer specializing in MERN Stack and Cloud Technologies." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== CURSOR GLOW ===== -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ===== PARTICLES ===== -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>Saud<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-title">
+        Hi, I'm <span class="gradient-text">Saud Ahmed</span><br />
+        <span class="hero-subtitle-text typewriter" id="typewriter"></span>
+      </h1>
+      <p class="hero-description">
+        A passionate <strong>Full-Stack Developer</strong> & CS student at SZABIST Islamabad,
+        specializing in <strong>MERN Stack</strong>, <strong>Cloud Architecture</strong>, and
+        building scalable web applications that make a difference.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <span>View My Work</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">2+</span>
+          <span class="stat-label">Years Learning</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-container">
+        <div class="avatar-ring ring-1"></div>
+        <div class="avatar-ring ring-2"></div>
+        <div class="avatar-ring ring-3"></div>
+        <div class="avatar-core">
+          <div class="avatar-initials">SA</div>
+          <div class="avatar-code-overlay">
+            <span>&lt;dev /&gt;</span>
+          </div>
+        </div>
+        <div class="floating-badge badge-react">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#61DAFB"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.5" fill="none"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.5" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.5" fill="none" transform="rotate(120 12 12)"/></svg>
+          React.js
+        </div>
+        <div class="floating-badge badge-node">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#68A063"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Node.js
+        </div>
+        <div class="floating-badge badge-aws">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FF9900"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 01-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 01-.287-.375 6.18 6.18 0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 01-.28.104.488.488 0 01-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 011.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 00-.735-.136 6.02 6.02 0 00-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.063-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 01.32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 01.311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 01-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 00.415-.758.777.777 0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 01.24.2.43.43 0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83 0 01-.303-.096 3.652 3.652 0 00-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.743.167-1.158.167z"/></svg>
+          AWS
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead">
+            I'm a <strong>Computer Science student</strong> at SZABIST Islamabad with a deep passion for
+            building modern, scalable web applications. I thrive at the intersection of clean code and
+            beautiful design.
+          </p>
+          <p>
+            With hands-on experience in the <strong>MERN Stack</strong> and <strong>AWS Cloud Architecture</strong>,
+            I've worked on real-world projects from full-stack task management tools to secure cloud-deployed
+            applications. I completed a frontend internship at <strong>Fidsor</strong> and continue to grow
+            through self-learning and professional work.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new technologies, contributing to university tech events,
+            and building projects that solve real problems.
+          </p>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <span class="info-label">📍 Location</span>
+              <span class="info-value">Islamabad, Pakistan</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🎓 University</span>
+              <span class="info-value">SZABIST Islamabad</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">📧 Email</span>
+              <span class="info-value">saudmemon581@gmail.com</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">📱 Phone</span>
+              <span class="info-value">+923068292658</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🌐 Languages</span>
+              <span class="info-value">English, Urdu, Sindhi</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">💼 Status</span>
+              <span class="info-value available">Open to Work</span>
+            </div>
+          </div>
+          <div class="about-actions">
+            <a href="https://www.linkedin.com/in/saudmemon/" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn Profile
+            </a>
+            <a href="https://github.com/saudmemon" target="_blank" rel="noopener" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="code-card">
+            <div class="code-card-header">
+              <div class="code-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="code-filename">saud.json</span>
+            </div>
+            <div class="code-card-body">
+              <pre class="code-content"><code><span class="code-brace">{</span>
+  <span class="code-key">"name"</span>: <span class="code-string">"Saud Ahmed Memon"</span>,
+  <span class="code-key">"role"</span>: <span class="code-string">"Full-Stack Developer"</span>,
+  <span class="code-key">"university"</span>: <span class="code-string">"SZABIST"</span>,
+  <span class="code-key">"degree"</span>: <span class="code-string">"BS Computer Science"</span>,
+  <span class="code-key">"location"</span>: <span class="code-string">"Islamabad, PK"</span>,
+  <span class="code-key">"stack"</span>: [
+    <span class="code-string">"React.js"</span>,
+    <span class="code-string">"Node.js"</span>,
+    <span class="code-string">"MongoDB"</span>,
+    <span class="code-string">"Express.js"</span>
+  ],
+  <span class="code-key">"cloud"</span>: <span class="code-string">"AWS"</span>,
+  <span class="code-key">"available"</span>: <span class="code-bool">true</span>,
+  <span class="code-key">"passion"</span>: <span class="code-string">"Building great things"</span>
+<span class="code-brace">}</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Backend</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">JWT Auth</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">MERN Stack</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+            </div>
+            <h3>Cloud & DevOps</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">EC2</span>
+            <span class="skill-tag">VPC</span>
+            <span class="skill-tag">RDS</span>
+            <span class="skill-tag">Vercel</span>
+            <span class="skill-tag">Render</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+            </div>
+            <h3>Tools & Others</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">DSA</span>
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">AI for Web Apps</span>
+            <span class="skill-tag">MS Office</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tech Marquee -->
+      <div class="tech-marquee">
+        <div class="marquee-track">
+          <div class="marquee-item"><span>React.js</span></div>
+          <div class="marquee-item"><span>Node.js</span></div>
+          <div class="marquee-item"><span>MongoDB</span></div>
+          <div class="marquee-item"><span>Express.js</span></div>
+          <div class="marquee-item"><span>AWS</span></div>
+          <div class="marquee-item"><span>Next.js</span></div>
+          <div class="marquee-item"><span>JavaScript</span></div>
+          <div class="marquee-item"><span>REST APIs</span></div>
+          <div class="marquee-item"><span>Git</span></div>
+          <div class="marquee-item"><span>Vercel</span></div>
+          <div class="marquee-item"><span>MERN Stack</span></div>
+          <div class="marquee-item"><span>JWT Auth</span></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="marquee-item"><span>React.js</span></div>
+          <div class="marquee-item"><span>Node.js</span></div>
+          <div class="marquee-item"><span>MongoDB</span></div>
+          <div class="marquee-item"><span>Express.js</span></div>
+          <div class="marquee-item"><span>AWS</span></div>
+          <div class="marquee-item"><span>Next.js</span></div>
+          <div class="marquee-item"><span>JavaScript</span></div>
+          <div class="marquee-item"><span>REST APIs</span></div>
+          <div class="marquee-item"><span>Git</span></div>
+          <div class="marquee-item"><span>Vercel</span></div>
+          <div class="marquee-item"><span>MERN Stack</span></div>
+          <div class="marquee-item"><span>JWT Auth</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section experience-section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Work History</span>
+        <h2 class="section-title">My <span class="gradient-text">Experience</span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div>
+                <h3 class="timeline-role">Front-End Developer (React.js)</h3>
+                <p class="timeline-company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                  Fidsor Private Limited, Islamabad
+                </p>
+              </div>
+              <span class="timeline-date">Aug 2025 – Sep 2025</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Gained hands-on experience working on real-world projects using React.js, JavaScript, HTML, and CSS.</li>
+              <li>Collaborated with a team to design and develop responsive user interfaces for web applications.</li>
+              <li>Worked on improving UI/UX, debugging code, and implementing new features per client requirements.</li>
+              <li>Followed agile development processes and professional project deadlines.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>React.js</span><span>JavaScript</span><span>HTML/CSS</span><span>UI/UX</span><span>Agile</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-card-header">
+              <div>
+                <h3 class="timeline-role">Frontend Developer Intern</h3>
+                <p class="timeline-company">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                  Fidsor, Islamabad
+                </p>
+              </div>
+              <span class="timeline-date">Jul 2024 – Aug 2024</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Completed a 2-month internship focusing on HTML, CSS, JavaScript, and React.</li>
+              <li>Created responsive website layouts and implemented user interfaces.</li>
+              <li>Worked with senior developers to fix bugs and improve designs.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card featured">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              </div>
+              <span class="project-badge">Featured</span>
+            </div>
+            <h3 class="project-title">Task Management Tool</h3>
+            <p class="project-description">
+              A full-stack Task Management web application built with Next.js, Node.js, Express, and MongoDB Atlas.
+              Features JWT-based authentication, protected routes, and full CRUD operations via RESTful APIs.
+              Deployed on Vercel (frontend) and Render (backend).
+            </p>
+            <div class="project-tech">
+              <span>Next.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>JWT</span><span>Vercel</span><span>Render</span>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                JWT Authentication & Protected Routes
+              </div>
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Full CRUD RESTful API
+              </div>
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Deployed on Cloud (Vercel + Render)
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://task-management-frontend-lki0g3iiu.vercel.app" target="_blank" rel="noopener" class="project-link primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+              <a href="https://github.com/saudmemon/task-management-frontend" target="_blank" rel="noopener" class="project-link secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+                Frontend
+              </a>
+              <a href="https://github.com/saudmemon/task-management-mern" target="_blank" rel="noopener" class="project-link secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+                Backend
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon-wrap cloud">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+              </div>
+              <span class="project-badge cloud-badge">Cloud</span>
+            </div>
+            <h3 class="project-title">AWS Full-Stack Deployment</h3>
+            <p class="project-description">
+              Deployed a full-stack web application on AWS with a secure HTTPS setup. Configured VPC with
+              public/private subnets, launched EC2 instance, set up RDS for managed database, and secured
+              with Let's Encrypt SSL on a custom domain.
+            </p>
+            <div class="project-tech">
+              <span>AWS EC2</span><span>VPC</span><span>RDS</span><span>SSL/HTTPS</span><span>Let's Encrypt</span>
+            </div>
+            <div class="project-highlights">
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                VPC with Public & Private Subnets
+              </div>
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                HTTPS with Let's Encrypt SSL
+              </div>
+              <div class="highlight-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom Domain Configuration
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://buildwithsaud.twilightparadox.com/" target="_blank" rel="noopener" class="project-link primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live App
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section class="section education-section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Background</span>
+        <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+      </div>
+      <div class="education-grid">
+
+        <div class="edu-card">
+          <div class="edu-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-content">
+            <span class="edu-degree">BS Computer Science</span>
+            <h3 class="edu-institution">SZABIST, Islamabad</h3>
+            <span class="edu-period">Feb 2023 – Present</span>
+            <p class="edu-desc">Actively participating in university activities and technical events. Focusing on software engineering, algorithms, and modern web technologies.</p>
+          </div>
+          <div class="edu-status current">Current</div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-icon secondary">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="edu-content">
+            <span class="edu-degree">Higher Secondary Certificate (HSC)</span>
+            <h3 class="edu-institution">GBDC, Bhan Saeedabad</h3>
+            <span class="edu-period">March 2020 – September 2022</span>
+            <p class="edu-desc">Achieved Grade A1 — demonstrating strong academic performance and dedication to excellence.</p>
+          </div>
+          <div class="edu-status completed">Grade A1</div>
+        </div>
+
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-section">
+        <h3 class="certs-title">Certifications & Courses</h3>
+        <div class="certs-grid">
+          <a href="https://www.coursera.org/account/accomplishments/records/FFHHO5WDQF67" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-logo coursera">C</div>
+            <div class="cert-info">
+              <h4>Introduction to AI</h4>
+              <p>Coursera</p>
+            </div>
+            <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="https://www.simplilearn.com/skillup" target="_blank" rel="noopener" class="cert-card">
+            <div class="cert-logo simplilearn">S</div>
+            <div class="cert-info">
+              <h4>Master AI for Web App Development</h4>
+              <p>Simplilearn</p>
+            </div>
+            <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="cert-card">
+            <div class="cert-logo szabist">Z</div>
+            <div class="cert-info">
+              <h4>AI & Data Science Technical Training</h4>
+              <p>SZABIST University Islamabad</p>
+            </div>
+            <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="cert-card">
+            <div class="cert-logo youtube">▶</div>
+            <div class="cert-info">
+              <h4>Sigma Web Development Course</h4>
+              <p>CodeWithHarry (YouTube)</p>
+            </div>
+            <svg class="cert-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-subtitle">I'm always open to discussing new opportunities, interesting projects, or just having a chat about tech.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <a href="mailto:saudmemon581@gmail.com" class="contact-value">saudmemon581@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Phone</span>
+              <a href="tel:+923068292658" class="contact-value">+92 306 8292658</a>
+            </div>
+          </div>
+          <div class="contact-card-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">Location</span>
+              <span class="contact-value">Islamabad, Pakistan</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/saudmemon/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://github.com/saudmemon" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            </a>
+            <a href="mailto:saudmemon581@gmail.com" class="social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Project Collaboration" required />
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span id="btnText">Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Message sent! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#home" class="footer-logo">
+          <span class="logo-bracket">&lt;</span>Saud<span class="logo-bracket">/&gt;</span>
+        </a>
+        <p class="footer-text">Designed & Built with ❤️ by Saud Ahmed Memon</p>
+        <p class="footer-copy">© 2025 Saud Ahmed Memon. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
