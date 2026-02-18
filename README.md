@@ -2,13 +2,11 @@
 
 A modern, responsive personal portfolio website built with pure HTML, CSS, and JavaScript — showcasing my skills, projects, and experience as a Computer Science student.
 
-![Portfolio Preview](preview.png)
-
 ---
 
 ## 🌐 Live Demo
 
-🔗 [View Live Portfolio](https://saud-portfolio.vercel.app)
+🔗 [View Live Portfolio](https://saudm-dev.vercel.app)
 
 ---
 
@@ -58,7 +56,7 @@ saud-portfolio-v2/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/saud-portfolio-v2.git
+   git clone https://github.com/saudmemon/saud-portfolio-v2.git
    ```
 
 2. **Navigate to the project folder**
@@ -99,9 +97,9 @@ To deploy your own version:
 ## 👨‍💻 Author
 
 **Saud**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
-- Email: your.email@example.com
+- GitHub:(https://github.com/saudmemon)
+- LinkedIn:(https://www.linkedin.com/in/saudmemon/)
+- Email: saudmemon581@gmail.com
 
 ---
 
