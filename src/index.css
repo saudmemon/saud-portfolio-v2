@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-secondary: #e2e8f0;
+  --bg-accent: #cbd5e1;
+  --primary: #B28135;
+  --primary-hover: #9A6F2D;
+  --secondary: #3b82f6;
+  --accent: #2dd4bf;
+  --text-primary: #030014;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --bg-main: #030014;
+  --bg-secondary: #0a0a1a;
+  --bg-accent: #16162d;
+  --primary: #B28135;
+  --primary-hover: #9A6F2D;
+  --secondary: #3b82f6;
+  --accent: #2dd4bf;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: auto !important; /* Managed by Lenis */
+}
+
+body {
+  font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  section {
+    @apply py-24;
+  }
+
+  /* Typography */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .section-tag {
+    @apply inline-block px-4 py-1.5 rounded-full text-primary text-xs font-bold uppercase tracking-widest mb-6;
+    background-color: rgba(178, 129, 53, 0.1);
+    border: 1px solid rgba(178, 129, 53, 0.2);
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-7xl font-extrabold mb-12 leading-tight tracking-tight text-text-primary;
+  }
+
+  /* Glassmorphism */
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .glass-card:hover {
+    @apply dark:bg-white/5 -translate-y-2 shadow-2xl;
+    transform: scale(1.02);
+    box-shadow: 0 10px 40px -10px rgba(178, 129, 53, 0.4), 0 0 20px rgba(178, 129, 53, 0.2);
+    border-color: rgba(178, 129, 53, 0.4);
+  }
+
+  /* Bento Grid Elements - Since we had these let's convert them softly */
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[180px];
+  }
+
+  .bento-item {
+    @apply relative overflow-hidden;
+  }
+  .bento-item.tall { @apply lg:row-span-2; }
+  .bento-item.large { @apply lg:col-span-2 lg:row-span-2; }
+  .bento-item.small { @apply lg:col-span-1; }
+  .bento-item.wide { @apply lg:col-span-2; }
+  
+  .loader-screen {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-bg-main transition-opacity duration-1000;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-accent);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+::selection {
+  background: var(--primary);
+  color: #fff;
+}

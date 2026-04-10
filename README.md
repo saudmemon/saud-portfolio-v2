@@ -1,112 +1,73 @@
-# 🚀 Saud's Portfolio Website
+# React + TypeScript + Vite
 
-A modern, responsive personal portfolio website built with pure HTML, CSS, and JavaScript — showcasing my skills, projects, and experience as a Computer Science student.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🌐 Live Demo
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-🔗 [View Live Portfolio](https://saudm-dev.vercel.app)
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## ✨ Features
+## Expanding the ESLint configuration
 
-- ⚡ **Fast & Lightweight** — No frameworks, pure HTML/CSS/JS
-- 📱 **Fully Responsive** — Works on all screen sizes (mobile, tablet, desktop)
-- 🎨 **Modern Design** — Clean UI with smooth animations
-- 🌙 **Dark Theme** — Eye-friendly dark color scheme
-- 📬 **Contact Section** — Easy way to get in touch
-- 🧭 **Smooth Navigation** — Scroll-based active link highlighting
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
----
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## 🛠️ Built With
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-| Technology | Purpose |
-|---|---|
-| HTML5 | Structure & Semantic Markup |
-| CSS3 | Styling, Animations & Responsive Layout |
-| JavaScript | Interactivity & DOM Manipulation |
-| Vercel | Hosting & Deployment |
-
----
-
-## 📁 Project Structure
-
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-saud-portfolio-v2/
-│
-├── index.html          # Main HTML file
-├── style.css           # All styles and animations
-├── script.js           # JavaScript functionality
-├── vercel.json         # Vercel deployment config
-└── README.md           # Project documentation
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Edge, etc.)
-- No installations required!
-
-### Run Locally
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/saudmemon/saud-portfolio-v2.git
-   ```
-
-2. **Navigate to the project folder**
-   ```bash
-   cd saud-portfolio-v2
-   ```
-
-3. **Open in browser**
-   - Simply open `index.html` in your browser, OR
-   - Use the **Live Server** extension in VS Code for hot reload
-
----
-
-## 📦 Deployment
-
-This project is deployed on **Vercel**.
-
-To deploy your own version:
-
-1. Fork this repository
-2. Go to [vercel.com](https://vercel.com)
-3. Import your forked repository
-4. Click **Deploy** — that's it! ✅
-
----
-
-## 📸 Sections
-
-- **Hero** — Introduction and call-to-action
-- **About** — Background and personal summary
-- **Skills** — Technical skills and tools
-- **Education** — Academic background
-- **Projects** — Featured work and projects
-- **Contact** — Get in touch
-
----
-
-## 👨‍💻 Author
-
-**Saud**
-- GitHub:(https://github.com/saudmemon)
-- LinkedIn:(https://www.linkedin.com/in/saudmemon/)
-- Email: saudmemon581@gmail.com
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-> ⭐ If you found this helpful or inspiring, feel free to **star** the repository!
