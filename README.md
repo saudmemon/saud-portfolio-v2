@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# 👨‍💻 Saud Ahmed – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website!
+This space reflects my journey as a Computer Science student, frontend developer, and someone passionate about building impactful digital solutions.
 
-Currently, two official plugins are available:
+## 🚀 About Me
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+I’m currently pursuing a BS in Computer Science at SZABIST, Islamabad.
+I enjoy creating modern, responsive web applications and continuously improving my skills in React, JavaScript, and the MERN stack.
 
-## React Compiler
+Alongside development, I’m actively involved in leadership and community roles:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Campus Ambassador at AIESEC in Pakistan
+* Technical Coordinator at MLSA SZABIST
 
-## Expanding the ESLint configuration
+I believe in learning by building, collaborating, and pushing beyond my comfort zone.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Frontend:** React.js, JavaScript, HTML, CSS, Tailwind
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB, PostgreSQL
+* **Cloud & Deployment:** AWS, Vercel, Render
+* **Tools:** Git, GitHub, Figma
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📂 Featured Projects
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🔐 Secure IoT Gateway Simulator (FYP – In Progress)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+A full-stack platform focused on secure IoT communication and real-time monitoring with role-based authentication.
+
+### 📝 Stack Blogging Platform (MERN)
+
+A blogging platform where users can create, edit, and manage posts with Markdown support.
+🔗 GitHub: https://github.com/saudmemon/blog-platform
+
+### ✅ Task Management Tool
+
+A full-stack task manager with authentication and real-time workflow.
+🔗 GitHub: https://github.com/saudmemon/task-management-frontend
+🌐 Live: https://task-management-frontend-rose-rho.vercel.app/login
+
+---
+
+## 🌐 Live Portfolio
+
+👉 (Add your deployed link here)
+
+---
+
+## 📬 Contact Me
+
+* 📧 Email: [saudmemon581@gmail.com](mailto:saudmemon581@gmail.com)
+* 📱 Phone: +92 3068292658
+* 💼 LinkedIn: https://linkedin.com/in/saudmemon
+
+---
+
+## ✨ Final Note
+
+This portfolio is more than just a project — it represents my growth, consistency, and passion for tech.
+I’m always open to opportunities, collaborations, and learning experiences.
+
+If you like my work, feel free to connect 🚀
