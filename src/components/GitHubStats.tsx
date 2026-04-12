@@ -1,26 +1,31 @@
 // @ts-ignore
 import { GitHubCalendar } from 'react-github-calendar';
 import { motion } from 'framer-motion';
+import { useTheme } from './ThemeProvider';
 
 export const GitHubStats = () => {
+  const { theme } = useTheme();
+
   return (
-    <motion.div 
-      className="glass-card p-10 flex flex-col items-center justify-center relative group overflow-hidden w-full"
+    <motion.div
+      className="glass-card p-8 md:p-10 relative overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="mb-6 text-center">
-        <h3 className="text-2xl font-bold mb-2">GitHub Contributions</h3>
-        <p className="text-text-secondary text-sm">A visual summary of my open-source and project commit history</p>
+      <div className="mb-6">
+        <h3 className="text-lg font-bold mb-1 tracking-tight">GitHub Activity</h3>
+        <p className="text-xs text-text-muted">Commit history across open-source and personal projects</p>
       </div>
-      <div className="w-full flex justify-center overflow-x-auto pb-4">
-        <GitHubCalendar 
-          username="saudmemon" 
-          colorScheme="dark"
+      <div className="w-full flex justify-center overflow-x-auto pb-2">
+        <GitHubCalendar
+          username="saudmemon"
+          colorScheme={theme}
           theme={{
-            dark: ['var(--bg-secondary)', 'var(--primary)', 'var(--primary-hover)', 'var(--secondary)', 'var(--accent)']
-          }} 
+            dark: ['#161b22', '#B28135', '#c99540', '#6366f1', '#22d3ee'],
+            light: ['#ebedf0', '#B28135', '#c99540', '#6366f1', '#22d3ee'],
+          }}
         />
       </div>
     </motion.div>

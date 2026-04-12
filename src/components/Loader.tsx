@@ -5,9 +5,7 @@ export const Loader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 2 second mock loading
+    const timer = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -17,23 +15,39 @@ export const Loader = () => {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-main"
+          transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
+          className="loader-screen"
         >
-          <div className="flex flex-col items-center">
-             <motion.div
-              animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full mb-8"
-            />
-            <motion.div 
-               initial={{ opacity: 0, y: 10 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.2 }}
+          <div className="flex flex-col items-center gap-8">
+            {/* Elegant spinner */}
+            <div className="relative w-16 h-16">
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-transparent border-t-primary"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+              />
+              <motion.div
+                className="absolute inset-1 rounded-full border-2 border-transparent border-b-secondary"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+              />
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ boxShadow: '0 0 30px rgba(178, 129, 53, 0.2)' }}
+              />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="flex items-center gap-1"
             >
-                <h1 className="text-2xl font-bold tracking-widest text-text-primary uppercase flex gap-2">
-                    <span className="text-primary">S</span> A U D
-                </h1>
+              <span className="text-2xl font-bold tracking-[0.3em] text-text-primary">
+                S<span className="text-primary">A</span>UD
+              </span>
             </motion.div>
           </div>
         </motion.div>

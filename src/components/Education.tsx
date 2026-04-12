@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Award } from 'lucide-react';
 
 const education = [
-  { degree: 'BS Computer Science', institution: 'SZABIST Islamabad', year: '2023 - 2027' },
+  { degree: 'BS Computer Science', institution: 'SZABIST Islamabad', year: '2023 – 2027' },
   { degree: 'Higher Secondary Certificate', institution: 'Pre-Engineering', year: 'Grade A1' },
 ];
 
@@ -12,61 +12,112 @@ const certifications = [
   { title: 'AI & Data Science Training', issuer: 'SZABIST', date: '2024' },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] },
+  }),
+};
+
 export const Education = () => {
   return (
-    <section id="education" className="relative bg-bg-secondary/50 py-24">
+    <section id="education" className="relative">
       <div className="container">
-        <div className="text-center mb-16">
-          <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-tag">Academic Background</motion.span>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="section-title">
-            Education & <span className="gradient-text">Certifications</span>
+        {/* Header */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-tag"
+          >
+            Education
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="section-title"
+          >
+            Academic <span className="gradient-text">journey</span>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Education Column */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <GraduationCap size={28} className="text-primary" />
-              <h3 className="text-2xl font-bold">Education</h3>
-            </div>
-            
-            {education.map((item, i) => (
-              <div key={i} className="glass-card p-8 border-l-4 border-l-primary hover:border-l-primary-hover">
-                <h4 className="text-xl font-bold mb-2">{item.degree}</h4>
-                <div className="flex justify-between items-center text-text-secondary">
-                  <span className="font-medium text-text-primary">{item.institution}</span>
-                  <span className="text-sm font-bold bg-white/5 px-3 py-1 rounded-md">{item.year}</span>
-                </div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <GraduationCap size={18} />
               </div>
+              <h3 className="text-lg font-bold tracking-tight">Education</h3>
+            </div>
+
+            {education.map((item, i) => (
+              <motion.div
+                key={i}
+                custom={i + 1}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="glass-card p-6 border-l-[3px] border-l-primary/50 hover:border-l-primary transition-colors"
+              >
+                <h4 className="text-base font-bold mb-1.5">{item.degree}</h4>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-text-secondary font-medium">{item.institution}</span>
+                  <span className="text-xs font-medium text-text-muted bg-white/5 px-3 py-1 rounded-md">
+                    {item.year}
+                  </span>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
 
           {/* Certifications Column */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            custom={1}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <Award size={28} className="text-secondary" />
-              <h3 className="text-2xl font-bold">Certifications</h3>
-            </div>
-            
-            {certifications.map((item, i) => (
-              <div key={i} className="glass-card p-8 border-l-4 border-l-secondary hover:border-l-secondary">
-                <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                <div className="flex justify-between items-center text-text-secondary">
-                  <span className="font-medium text-text-primary">{item.issuer}</span>
-                  <span className="text-sm font-bold bg-white/5 px-3 py-1 rounded-md">{item.date}</span>
-                </div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-9 h-9 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+                <Award size={18} />
               </div>
+              <h3 className="text-lg font-bold tracking-tight">Certifications</h3>
+            </div>
+
+            {certifications.map((item, i) => (
+              <motion.div
+                key={i}
+                custom={i + 2}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="glass-card p-6 border-l-[3px] border-l-secondary/50 hover:border-l-secondary transition-colors"
+              >
+                <h4 className="text-base font-bold mb-1.5">{item.title}</h4>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-text-secondary font-medium">{item.issuer}</span>
+                  <span className="text-xs font-medium text-text-muted bg-white/5 px-3 py-1 rounded-md">
+                    {item.date}
+                  </span>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

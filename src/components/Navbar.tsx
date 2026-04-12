@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
+  { name: 'Work', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -14,6 +14,7 @@ const navLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -22,59 +23,116 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  // Track active section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' }
+    );
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[90] transition-all duration-500 ${scrolled ? 'py-4' : 'py-8'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled ? 'py-3' : 'py-5 md:py-6'}`}>
       <div className="container">
-        <div className={`glass-card rounded-full px-8 py-3 flex items-center justify-between transition-all duration-500 ${scrolled ? 'bg-bg-accent/80 border-primary/20 shadow-2xl' : 'bg-transparent border-transparent'}`}>
-          <a href="#home" className="text-2xl font-black tracking-tighter hover:text-primary transition-colors">
-            SAUD<span className="text-primary">.</span>
+        <div
+          className={`rounded-2xl px-6 md:px-8 py-3 flex items-center justify-between transition-all duration-700 ${
+            scrolled
+              ? 'bg-bg-main/70 dark:bg-bg-main/60 backdrop-blur-xl border border-white/[0.08] shadow-lg shadow-black/5'
+              : 'bg-transparent border border-transparent'
+          }`}
+        >
+          {/* Logo */}
+          <a href="#home" className="relative group">
+            <span className="text-xl font-bold tracking-tight text-text-primary transition-colors group-hover:text-primary">
+              saud
+            </span>
+            <span className="text-primary font-bold text-xl">.</span>
           </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-xs font-black uppercase tracking-[0.2em] text-text-muted hover:text-primary transition-colors relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
-              </a>
-            ))}
-            
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-white/10 text-text-primary transition-colors"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 rounded-full bg-text-primary text-bg-main text-xs font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all flex items-center gap-2"
-            >
-              Hire Me <ArrowUpRight size={14} />
-            </motion.a>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors duration-300 rounded-lg ${
+                    isActive
+                      ? 'text-primary'
+                      : 'text-text-muted hover:text-text-primary'
+                  }`}
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Mobile Toggle */}
-          <div className="flex items-center gap-4 md:hidden">
-            <button 
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-white/10 text-text-primary transition-colors"
+              className="p-2.5 rounded-xl hover:bg-white/10 text-text-muted hover:text-text-primary transition-all duration-300"
+              aria-label="Toggle Theme"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              <motion.div
+                key={theme}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.div>
             </button>
-            <button className="text-text-primary" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+
+            <a
+              href="#contact"
+              className="px-5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary-hover transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40"
+            >
+              Let's Talk
+            </a>
+          </div>
+
+          {/* Mobile Controls */}
+          <div className="flex items-center gap-3 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl hover:bg-white/10 text-text-muted transition-colors"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              className="p-2 text-text-primary"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <motion.div
+                key={isOpen ? 'close' : 'open'}
+                initial={{ scale: 0, rotate: -90 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? <X size={22} /> : <Menu size={22} />}
+              </motion.div>
             </button>
           </div>
         </div>
@@ -84,22 +142,39 @@ export const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-bg-secondary p-8 border-b border-primary/20 z-[99] md:hidden"
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="mx-5 mt-2 rounded-2xl bg-bg-secondary/95 backdrop-blur-xl border border-white/[0.06] overflow-hidden md:hidden"
           >
-            <div className="flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <a
+            <div className="p-6 flex flex-col gap-1">
+              {navLinks.map((link, i) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
-                  className="text-lg font-bold text-text-muted hover:text-primary transition-colors"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                    activeSection === link.href.slice(1)
+                      ? 'text-primary bg-primary/10'
+                      : 'text-text-muted hover:text-text-primary hover:bg-white/5'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
+              <div className="mt-3 pt-3 border-t border-white/5">
+                <a
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center px-4 py-3 rounded-xl bg-primary text-white text-sm font-medium"
+                >
+                  Let's Talk
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

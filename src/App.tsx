@@ -1,5 +1,6 @@
 import { SmoothScroll } from './components/SmoothScroll';
 import { ThreeScene } from './components/ThreeScene';
+import { ScrollProgress } from './components/ScrollProgress';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -18,6 +19,7 @@ function App() {
       <SmoothScroll>
         <div className="min-h-screen relative overflow-x-hidden font-sans">
           <ThreeScene />
+          <ScrollProgress />
           <Navbar />
           <main>
             <Hero />
