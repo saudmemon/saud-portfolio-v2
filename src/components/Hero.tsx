@@ -28,7 +28,7 @@ const stagger = {
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] } },
 };
 
 export const Hero = () => {
@@ -47,7 +47,7 @@ export const Hero = () => {
               <motion.div
                 className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden relative z-10 ring-2 ring-white/10 ring-offset-4 ring-offset-bg-main"
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] }}
               >
                 <img
                   src={meImg}
