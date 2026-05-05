@@ -91,7 +91,7 @@ export const Projects = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="group relative rounded-2xl overflow-hidden mb-8 border border-white/[0.06] bg-bg-secondary/50"
+          className="group relative rounded-2xl overflow-hidden mb-8 border border-text-primary/5 bg-bg-secondary/50"
         >
           <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-xl bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20" />
 
@@ -130,7 +130,7 @@ export const Projects = () => {
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {featuredProject.tech.map((t, j) => (
-                  <span key={j} className="text-xs font-medium px-3 py-1.5 bg-white/5 border border-white/[0.06] rounded-lg text-text-muted">
+                  <span key={j} className="text-xs font-medium px-3 py-1.5 bg-white/5 border border-text-primary/5 rounded-lg text-text-secondary">
                     {t}
                   </span>
                 ))}
@@ -138,7 +138,7 @@ export const Projects = () => {
 
               <div className="flex items-center gap-3">
                 {featuredProject.github !== '#' && (
-                  <a href={featuredProject.github} target="_blank" className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 text-text-muted hover:text-primary hover:border-primary/30 transition-all">
+                  <a href={featuredProject.github} target="_blank" className="w-10 h-10 rounded-xl flex items-center justify-center border border-text-primary/10 text-text-secondary hover:text-primary hover:border-primary/30 transition-all">
                     <GithubIcon size={18} />
                   </a>
                 )}
@@ -190,7 +190,7 @@ export const Projects = () => {
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((t, j) => (
-                      <span key={j} className="text-[11px] font-medium px-2.5 py-1 bg-white/5 border border-white/[0.06] rounded-md text-text-muted">
+                      <span key={j} className="text-[11px] font-medium px-2.5 py-1 bg-white/5 border border-text-primary/5 rounded-md text-text-secondary">
                         {t}
                       </span>
                     ))}
@@ -199,12 +199,12 @@ export const Projects = () => {
 
                 <div className="flex items-center gap-4">
                   {project.github !== '#' && (
-                    <a href={project.github} target="_blank" className="flex items-center gap-2 text-xs font-medium text-text-muted hover:text-primary transition-colors">
+                    <a href={project.github} target="_blank" className="flex items-center gap-2 text-xs font-medium text-text-secondary hover:text-primary transition-colors">
                       <GithubIcon size={14} /> Code
                     </a>
                   )}
                   {project.link !== '#' && (
-                    <a href={project.link} target="_blank" className="flex items-center gap-2 text-xs font-medium text-text-muted hover:text-primary transition-colors">
+                    <a href={project.link} target="_blank" className="flex items-center gap-2 text-xs font-medium text-text-secondary hover:text-primary transition-colors">
                       <ArrowUpRight size={14} /> Live Demo
                     </a>
                   )}

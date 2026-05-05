@@ -146,7 +146,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, height: 'auto', y: 0 }}
             exit={{ opacity: 0, height: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="mx-5 mt-2 rounded-2xl bg-bg-secondary/95 backdrop-blur-xl border border-white/[0.06] overflow-hidden md:hidden"
+            className="mx-5 mt-2 rounded-2xl bg-bg-secondary/95 backdrop-blur-xl border border-text-primary/5 overflow-hidden md:hidden"
           >
             <div className="p-6 flex flex-col gap-1">
               {navLinks.map((link, i) => (

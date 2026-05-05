@@ -76,7 +76,7 @@ export const Education = () => {
                 <h4 className="text-base font-bold mb-1.5">{item.degree}</h4>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-text-secondary font-medium">{item.institution}</span>
-                  <span className="text-xs font-medium text-text-muted bg-white/5 px-3 py-1 rounded-md">
+                  <span className="text-xs font-medium text-text-secondary bg-text-primary/5 px-3 py-1 rounded-md">
                     {item.year}
                   </span>
                 </div>
@@ -113,7 +113,7 @@ export const Education = () => {
                 <h4 className="text-base font-bold mb-1.5">{item.title}</h4>
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-text-secondary font-medium">{item.issuer}</span>
-                  <span className="text-xs font-medium text-text-muted bg-white/5 px-3 py-1 rounded-md">
+                  <span className="text-xs font-medium text-text-secondary bg-text-primary/5 px-3 py-1 rounded-md">
                     {item.date}
                   </span>
                 </div>

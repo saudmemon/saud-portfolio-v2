@@ -132,7 +132,7 @@ export const Hero = () => {
               href="#contact"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="px-7 py-3.5 rounded-xl text-sm font-semibold text-text-primary border border-white/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+              className="px-7 py-3.5 rounded-xl text-sm font-semibold text-text-primary border border-text-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
             >
               Get in Touch
             </motion.a>
@@ -154,7 +154,7 @@ export const Hero = () => {
                 target={href.startsWith('mailto') ? undefined : '_blank'}
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-300"
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary/10 border border-text-primary/5 hover:border-primary/20 transition-all duration-300"
                 aria-label={label}
               >
                 <Icon size={18} />
