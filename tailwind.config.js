@@ -8,18 +8,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-main': 'var(--bg-main)',
-        'bg-secondary': 'var(--bg-secondary)',
-        'bg-accent': 'var(--bg-accent)',
+        'bg-main': 'rgb(var(--bg-main-rgb) / <alpha-value>)',
+        'bg-secondary': 'rgb(var(--bg-secondary-rgb) / <alpha-value>)',
+        'bg-accent': 'rgb(var(--bg-accent-rgb) / <alpha-value>)',
         'bg-card': 'var(--bg-card)',
-        'primary': 'var(--primary)',
-        'primary-hover': 'var(--primary-hover)',
+        'primary': 'rgb(var(--primary-rgb) / <alpha-value>)',
+        'primary-hover': 'rgb(var(--primary-hover-rgb) / <alpha-value>)',
         'primary-glow': 'var(--primary-glow)',
-        'secondary': 'var(--secondary)',
-        'accent': 'var(--accent)',
-        'text-primary': 'var(--text-primary)',
-        'text-secondary': 'var(--text-secondary)',
-        'text-muted': 'var(--text-muted)',
+        'secondary': 'rgb(var(--secondary-rgb) / <alpha-value>)',
+        'accent': 'rgb(var(--accent-rgb) / <alpha-value>)',
+        'text-primary': 'rgb(var(--text-primary-rgb) / <alpha-value>)',
+        'text-secondary': 'rgb(var(--text-secondary-rgb) / <alpha-value>)',
+        'text-muted': 'rgb(var(--text-muted-rgb) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

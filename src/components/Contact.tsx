@@ -56,8 +56,14 @@ export const Contact = () => {
     setLoading(true);
     setStatus('idle');
 
+    // NOTE: You must replace these placeholders with your actual EmailJS credentials
+    // Get them at https://dashboard.emailjs.com/
+    const SERVICE_ID = 'service_your_id';
+    const TEMPLATE_ID = 'template_your_id';
+    const PUBLIC_KEY = 'your_public_key';
+
     emailjs
-      .sendForm('service_YOUR_SERVICE_ID', 'template_YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')
+      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then(() => {
         setStatus('success');
         formRef.current?.reset();

@@ -6,37 +6,48 @@
 
 /* ─── Premium Design Tokens ────────────────────────────── */
 :root {
-  --bg-main: #f6f6f9;
-  --bg-secondary: #eaeaef;
-  --bg-accent: #d4d4dc;
+  --bg-main-rgb: 246, 246, 249;
+  --bg-secondary-rgb: 234, 234, 239;
+  --bg-accent-rgb: 212, 212, 220;
   --bg-card: rgba(255, 255, 255, 0.6);
-  --primary: #B28135;
-  --primary-hover: #c99540;
+  --primary-rgb: 178, 129, 53;
+  --primary-hover-rgb: 201, 149, 64;
   --primary-glow: rgba(178, 129, 53, 0.15);
-  --secondary: #6366f1;
-  --accent: #22d3ee;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --secondary-rgb: 99, 102, 241;
+  --accent-rgb: 34, 211, 238;
+  --text-primary-rgb: 15, 23, 42;
+  --text-secondary-rgb: 71, 85, 105;
+  --text-muted-rgb: 148, 163, 184;
   --glass: rgba(255, 255, 255, 0.5);
   --glass-border: rgba(0, 0, 0, 0.06);
   --glass-hover: rgba(255, 255, 255, 0.7);
   --noise-opacity: 0.02;
+  
+  --bg-main: rgb(var(--bg-main-rgb));
+  --bg-secondary: rgb(var(--bg-secondary-rgb));
+  --bg-accent: rgb(var(--bg-accent-rgb));
+  --primary: rgb(var(--primary-rgb));
+  --primary-hover: rgb(var(--primary-hover-rgb));
+  --secondary: rgb(var(--secondary-rgb));
+  --accent: rgb(var(--accent-rgb));
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
 }
 
 .dark {
-  --bg-main: #0b0f19;
-  --bg-secondary: #111827;
-  --bg-accent: #1e293b;
+  --bg-main-rgb: 11, 15, 25;
+  --bg-secondary-rgb: 17, 24, 39;
+  --bg-accent-rgb: 30, 41, 59;
   --bg-card: rgba(17, 24, 39, 0.6);
-  --primary: #B28135;
-  --primary-hover: #c99540;
+  --primary-rgb: 178, 129, 53;
+  --primary-hover-rgb: 201, 149, 64;
   --primary-glow: rgba(178, 129, 53, 0.12);
-  --secondary: #818cf8;
-  --accent: #22d3ee;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --secondary-rgb: 129, 140, 248;
+  --accent-rgb: 34, 211, 238;
+  --text-primary-rgb: 241, 245, 249;
+  --text-secondary-rgb: 148, 163, 184;
+  --text-muted-rgb: 100, 116, 139;
   --glass: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.06);
   --glass-hover: rgba(255, 255, 255, 0.06);
