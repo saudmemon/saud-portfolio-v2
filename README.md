@@ -20,10 +20,8 @@ I believe in learning by building, collaborating, and pushing beyond my comfort 
 ## 🛠️ Tech Stack
 
 * **Frontend:** React.js, JavaScript, HTML, CSS, Tailwind
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB, PostgreSQL
-* **Cloud & Deployment:** AWS, Vercel, Render
-* **Tools:** Git, GitHub, Figma
+* **Cloud & Deployment:** Vercel 
+* **Tools:** Git, GitHub, 
 
 ---
 
@@ -48,7 +46,7 @@ A full-stack task manager with authentication and real-time workflow.
 
 ## 🌐 Live Portfolio
 
-👉 (Add your deployed link here)
+👉 https://saudm-dev.vercel.app/
 
 ---
 
