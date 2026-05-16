@@ -76,7 +76,7 @@ export const Hero = () => {
 
           {/* Tag */}
           <motion.div variants={fadeUp}>
-            <span className="section-tag">Available for opportunities</span>
+            <span className="section-tag">Open for Freelance Projects</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -85,8 +85,7 @@ export const Hero = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.05] tracking-tight"
             style={{ letterSpacing: '-0.04em' }}
           >
-            Hi, I'm{' '}
-            <span className="gradient-text">Saud Ahmed</span>
+            I build <span className="gradient-text">fast, modern websites</span> for businesses
           </motion.h1>
 
           {/* TypeWriter Subtitle */}
@@ -94,10 +93,10 @@ export const Hero = () => {
             <p className="text-lg md:text-xl text-text-secondary font-medium">
               <TypeWriter
                 words={[
-                  'Frontend Developer',
-                  'MERN Stack Enthusiast',
-                  'CS Student at SZABIST',
-                  'Open Source Contributor',
+                  'React.js Developer',
+                  'MERN Stack Expert',
+                  'Freelance Developer',
+                  'UI/UX Specialist',
                 ]}
                 speed={70}
                 deleteSpeed={35}
@@ -125,7 +124,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.97 }}
               className="group px-7 py-3.5 rounded-xl bg-primary text-white font-semibold text-sm flex items-center gap-2.5 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300"
             >
-              View Projects
+              View My Work
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </motion.a>
             <motion.a
@@ -134,7 +133,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.97 }}
               className="px-7 py-3.5 rounded-xl text-sm font-semibold text-text-primary border border-text-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
             >
-              Get in Touch
+              Let's Talk
             </motion.a>
           </motion.div>
 

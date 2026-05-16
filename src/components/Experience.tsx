@@ -5,14 +5,14 @@ const experiences = [
     role: 'Campus Ambassador',
     company: 'AIESEC',
     period: 'Apr 2026 – Present',
-    description: 'Spearheading campus initiatives, engaging students in leadership development programs and global exchange opportunities.',
+    description: 'Spearheading campus initiatives, leading leadership development programs and managing global exchange programs.',
     status: 'current',
   },
   {
     role: 'Technical Coordinator',
     company: 'MLSA SZABIST',
     period: 'Feb 2026 – Present',
-    description: 'Leading technical deployments for events, maintaining student platforms, and coordinating hackathons.',
+    description: 'Leading technical deployments for events, managing core technical infrastructure, and coordinating hackathons.',
     status: 'current',
   },
   {

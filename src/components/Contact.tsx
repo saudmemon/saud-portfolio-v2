@@ -1,10 +1,11 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle, XCircle, MessageCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'saudmemon581@gmail.com', href: 'mailto:saudmemon581@gmail.com', color: 'var(--primary)' },
+  { icon: MessageCircle, label: 'WhatsApp', value: '+92 312 345 0543', href: 'https://wa.me/923123450543', color: '#25D366' },
   { icon: Phone, label: 'Phone', value: '+92 306 829 2658', href: 'tel:+923068292658', color: 'var(--secondary)' },
   { icon: MapPin, label: 'Location', value: 'Islamabad, Pakistan', href: undefined, color: 'var(--accent)' },
 ];
@@ -184,7 +185,10 @@ export const Contact = () => {
               )}
             </AnimatePresence>
 
-            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5 mt-2">
+            <div className="mb-6">
+              <p className="text-sm font-semibold text-primary mb-2">Available for freelance projects — let's build something together.</p>
+            </div>
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <FloatingField id="user_name" name="user_name" label="Full Name" required />
                 <FloatingField id="user_email" name="user_email" label="Email Address" type="email" required />
@@ -207,6 +211,7 @@ export const Contact = () => {
                   </>
                 )}
               </motion.button>
+              <p className="text-center text-xs text-text-muted mt-2">Usually replies within 24 hours</p>
             </form>
           </motion.div>
         </div>

@@ -60,16 +60,7 @@ export const About = () => {
                 Saud Ahmed
               </h3>
               <p className="text-text-secondary text-[15px] md:text-base leading-[1.8] mb-6">
-                Computer Science student with growing expertise in{' '}
-                <span className="text-text-primary font-medium">React.js, JavaScript,</span>{' '}
-                and modern web technologies. I love building products that are both functional and beautiful.
-              </p>
-              <p className="text-text-secondary text-[15px] md:text-base leading-[1.8]">
-                Currently serving as{' '}
-                <span className="text-primary font-semibold">Campus Ambassador at AIESEC</span>{' '}
-                and{' '}
-                <span className="text-secondary font-semibold">Technical Coordinator at MLSA SZABIST</span>,
-                where I lead technical initiatives and foster community growth.
+                I'm a Front-End Developer based in Islamabad with hands-on experience in React.js, MERN Stack, and AWS deployment. I've built and redesigned real projects — including the official MLSA SZABIST website — and I help businesses get a fast, professional online presence. Open to freelance projects.
               </p>
             </div>
           </motion.div>

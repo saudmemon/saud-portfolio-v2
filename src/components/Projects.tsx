@@ -10,7 +10,7 @@ const GithubIcon = ({ size = 18 }: { size?: number }) => (
 
 const featuredProject = {
   title: 'Secure IoT Gateway Simulator',
-  category: 'Full-Stack · Final Year Project',
+  category: 'Full-Stack · Enterprise Solution',
   description: 'A cloud-integrated monitoring platform for real-time traffic visualization and anomaly detection in IoT ecosystems. Features JWT authentication, PostgreSQL, and live device provisioning.',
   tech: ['React', 'Node.js', 'PostgreSQL', 'JWT', 'WebSockets'],
   link: '#',

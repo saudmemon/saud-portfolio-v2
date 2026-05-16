@@ -54,11 +54,17 @@ export const Navbar = () => {
           }`}
         >
           {/* Logo */}
-          <a href="#home" className="relative group">
-            <span className="text-xl font-bold tracking-tight text-text-primary transition-colors group-hover:text-primary">
-              saud
+          <a href="#home" className="flex items-center gap-3 group">
+            <div className="flex items-center">
+              <span className="text-xl font-bold tracking-tight text-text-primary transition-colors group-hover:text-primary">
+                saud
+              </span>
+              <span className="text-primary font-bold text-xl">.</span>
+            </div>
+            <div className="hidden lg:block h-4 w-[1px] bg-text-muted/30 mx-1" />
+            <span className="hidden lg:block text-[11px] font-medium text-text-muted tracking-wider uppercase">
+              React Developer | Islamabad
             </span>
-            <span className="text-primary font-bold text-xl">.</span>
           </a>
 
           {/* Desktop Navigation */}
