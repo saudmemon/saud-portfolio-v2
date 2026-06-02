@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'saudmemon581@gmail.com', href: 'mailto:saudmemon581@gmail.com', color: 'var(--primary)' },
-  { icon: MessageCircle, label: 'WhatsApp', value: '+92 312 345 0543', href: 'https://wa.me/923123450543', color: '#25D366' },
+  { icon: MessageCircle, label: 'WhatsApp Chat', value: '+92 306 829 2658', href: 'https://wa.me/923068292658', color: '#25D366' },
   { icon: Phone, label: 'Phone', value: '+92 306 829 2658', href: 'tel:+923068292658', color: 'var(--secondary)' },
   { icon: MapPin, label: 'Location', value: 'Islamabad, Pakistan', href: undefined, color: 'var(--accent)' },
 ];
@@ -35,7 +35,11 @@ const FloatingField = ({
   );
 };
 
-export const Contact = () => {
+interface ContactProps {
+  recruiterMode: boolean;
+}
+
+export const Contact = ({ recruiterMode }: ContactProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -57,11 +61,10 @@ export const Contact = () => {
     setLoading(true);
     setStatus('idle');
 
-    // NOTE: You must replace these placeholders with your actual EmailJS credentials
-    // Get them at https://dashboard.emailjs.com/
-    const SERVICE_ID = 'service_your_id';
-    const TEMPLATE_ID = 'template_your_id';
-    const PUBLIC_KEY = 'your_public_key';
+    // EmailJS Credentials setup
+    const SERVICE_ID = 'service_u9i2m9i'; 
+    const TEMPLATE_ID = 'template_v8fawc8'; 
+    const PUBLIC_KEY = '5fL0U7LwI8y_N4u6-'; 
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
@@ -108,53 +111,73 @@ export const Contact = () => {
               viewport={{ once: true }}
               className="section-description mb-10"
             >
-              Have a project idea or just want to say hi? I'd love to hear from you.
+              Have a career opportunity or internship role in mind? I'd love to chat and share more about my skills.
             </motion.p>
 
             <div className="space-y-5">
-              {contactInfo.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                >
-                  {item.href ? (
-                    <a href={item.href} target={item.href.startsWith('mailto') ? undefined : '_blank'} className="flex items-center gap-4 group">
-                      <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 flex-shrink-0"
-                        style={{
-                          backgroundColor: `color-mix(in srgb, ${item.color} 12%, transparent)`,
-                          color: item.color,
-                        }}
+              {contactInfo.map((item, i) => {
+                const isWhatsApp = item.label.includes('WhatsApp');
+                const isGlow = isWhatsApp && recruiterMode;
+
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -15 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                  >
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('mailto') ? undefined : '_blank'}
+                        className={`flex items-center gap-4 group p-2.5 rounded-2xl transition-all duration-300 ${
+                          isGlow
+                            ? 'bg-[#25D366]/10 border border-[#25D366]/30 shadow-glow shadow-[#25D366]/10'
+                            : 'hover:bg-white/[0.03] border border-transparent'
+                        }`}
                       >
-                        <item.icon size={18} />
+                        <div
+                          className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 flex-shrink-0"
+                          style={{
+                            backgroundColor: `color-mix(in srgb, ${item.color} 12%, transparent)`,
+                            color: item.color,
+                          }}
+                        >
+                          <item.icon size={18} className={isGlow ? 'animate-pulse' : ''} />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
+                            {isGlow && (
+                              <span className="px-1.5 py-0.5 text-[8px] font-extrabold uppercase bg-[#25D366]/20 text-[#25D366] rounded">
+                                Preferred Fast Path
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm font-semibold text-text-primary group-hover:text-primary transition-colors">{item.value}</p>
+                        </div>
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-4 p-2.5">
+                        <div
+                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                          style={{
+                            backgroundColor: `color-mix(in srgb, ${item.color} 12%, transparent)`,
+                            color: item.color,
+                          }}
+                        >
+                          <item.icon size={18} />
+                        </div>
+                        <div>
+                          <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
+                          <p className="text-sm font-semibold text-text-primary">{item.value}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
-                        <p className="text-sm font-medium text-text-primary group-hover:text-primary transition-colors">{item.value}</p>
-                      </div>
-                    </a>
-                  ) : (
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{
-                          backgroundColor: `color-mix(in srgb, ${item.color} 12%, transparent)`,
-                          color: item.color,
-                        }}
-                      >
-                        <item.icon size={18} />
-                      </div>
-                      <div>
-                        <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
-                        <p className="text-sm font-medium text-text-primary">{item.value}</p>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              ))}
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -186,7 +209,7 @@ export const Contact = () => {
             </AnimatePresence>
 
             <div className="mb-6">
-              <p className="text-sm font-semibold text-primary mb-2">Available for freelance projects — let's build something together.</p>
+              <p className="text-sm font-semibold text-primary mb-2">Available for immediate hire or internships.</p>
             </div>
             <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -211,7 +234,7 @@ export const Contact = () => {
                   </>
                 )}
               </motion.button>
-              <p className="text-center text-xs text-text-muted mt-2">Usually replies within 24 hours</p>
+              <p className="text-center text-xs text-text-muted mt-2">Usually replies within 2 hours</p>
             </form>
           </motion.div>
         </div>
@@ -219,3 +242,4 @@ export const Contact = () => {
     </section>
   );
 };
+

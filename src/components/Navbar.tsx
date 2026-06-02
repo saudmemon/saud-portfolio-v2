@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Briefcase } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const navLinks = [
@@ -11,7 +11,12 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export const Navbar = () => {
+interface NavbarProps {
+  recruiterMode: boolean;
+  setRecruiterMode: (mode: boolean) => void;
+}
+
+export const Navbar = ({ recruiterMode, setRecruiterMode }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -96,6 +101,20 @@ export const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Recruiter Toggle Switch */}
+            <button
+              onClick={() => setRecruiterMode(!recruiterMode)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 ${
+                recruiterMode
+                  ? 'bg-primary/20 border-primary/40 text-primary shadow-glow shadow-primary/20'
+                  : 'bg-white/5 border-white/5 hover:border-primary/20 text-text-secondary hover:text-text-primary'
+              }`}
+              title="Toggle Recruiter Summary Dashboard"
+            >
+              <Briefcase size={12} className={recruiterMode ? 'animate-bounce' : ''} />
+              Recruiter Mode
+            </button>
+
             <button
               onClick={toggleTheme}
               className="p-2.5 rounded-xl hover:bg-white/10 text-text-muted hover:text-text-primary transition-all duration-300"
@@ -122,6 +141,17 @@ export const Navbar = () => {
           {/* Mobile Controls */}
           <div className="flex items-center gap-3 md:hidden">
             <button
+              onClick={() => setRecruiterMode(!recruiterMode)}
+              className={`p-2 rounded-xl border transition-all ${
+                recruiterMode
+                  ? 'bg-primary/20 border-primary/40 text-primary'
+                  : 'bg-white/5 border-white/5 text-text-muted'
+              }`}
+              aria-label="Toggle Recruiter Mode"
+            >
+              <Briefcase size={16} />
+            </button>
+            <button
               onClick={toggleTheme}
               className="p-2 rounded-xl hover:bg-white/10 text-text-muted transition-colors"
             >
@@ -141,6 +171,7 @@ export const Navbar = () => {
               </motion.div>
             </button>
           </div>
+
         </div>
       </div>
 
