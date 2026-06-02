@@ -29,7 +29,7 @@ const projects = [
   },
   {
     title: 'Secure IoT Gateway Simulator',
-    category: 'Full-Stack · Final Year Project',
+    category: 'Full-Stack · FYP In Progress',
     type: 'Full-Stack',
     description: 'A cloud-integrated gateway monitoring and traffic visualization dashboard with anomaly detection. Designed to simulate secure and insecure device communications, role-based JWT auth, and live security logging.',
     tech: ['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'JWT', 'bcrypt', 'RESTful API'],
@@ -46,7 +46,7 @@ const projects = [
   },
   {
     title: 'MLSA SZABIST Core Website (Redesign)',
-    category: 'Frontend · Redesign',
+    category: 'Frontend · In Progress',
     type: 'Frontend',
     description: 'Modernized and redesigned the official Microsoft Learn Student Ambassadors (MLSA) website for the SZABIST chapter. Migrated the code from vanilla JavaScript to React.js for component scalability and responsive design.',
     tech: ['React.js', 'Vite', 'Vanilla CSS', 'Framer Motion'],
