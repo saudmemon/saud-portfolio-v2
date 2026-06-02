@@ -60,9 +60,9 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
             clearInterval(interval);
             setDownloadState('completed');
             
-            // Create a physical link to trigger dynamic PDF generation or direct open
+            // Create a physical link to download the PDF from the public folder
             const link = document.createElement('a');
-            link.href = 'https://saudm-dev.vercel.app/Saud_Ahmed_Resume.pdf'; // Or fallback
+            link.href = '/Saud_Ahmed_Resume.pdf';
             link.target = '_blank';
             link.download = 'Saud_Ahmed_Resume.pdf';
             document.body.appendChild(link);
