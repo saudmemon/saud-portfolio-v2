@@ -8,7 +8,7 @@ import App from './App.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="saud-portfolio-theme">
+      <ThemeProvider defaultTheme="light" storageKey="saud-portfolio-theme">
         <App />
       </ThemeProvider>
     </HelmetProvider>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Briefcase } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
+import { Menu, X, Briefcase } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -20,7 +19,6 @@ export const Navbar = ({ recruiterMode, setRecruiterMode }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -45,8 +43,6 @@ export const Navbar = ({ recruiterMode, setRecruiterMode }: NavbarProps) => {
     sections.forEach((section) => observer.observe(section));
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
-
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${scrolled ? 'py-3' : 'py-5 md:py-6'}`}>
@@ -115,20 +111,6 @@ export const Navbar = ({ recruiterMode, setRecruiterMode }: NavbarProps) => {
               Recruiter Mode
             </button>
 
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-xl hover:bg-white/10 text-text-muted hover:text-text-primary transition-all duration-300"
-              aria-label="Toggle Theme"
-            >
-              <motion.div
-                key={theme}
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.div>
-            </button>
 
             <a
               href="#contact"
@@ -151,12 +133,7 @@ export const Navbar = ({ recruiterMode, setRecruiterMode }: NavbarProps) => {
             >
               <Briefcase size={16} />
             </button>
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-xl hover:bg-white/10 text-text-muted transition-colors"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+
             <button
               className="p-2 text-text-primary"
               onClick={() => setIsOpen(!isOpen)}

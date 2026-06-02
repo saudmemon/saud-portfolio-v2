@@ -138,10 +138,6 @@ body::before {
     background: var(--glass-hover);
     border-color: rgba(178, 129, 53, 0.2);
     transform: translateY(-4px);
-    box-shadow:
-      0 20px 40px -12px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(178, 129, 53, 0.1),
-      0 0 60px -20px var(--primary-glow);
   }
 
   /* ─── Scroll Progress Indicator ──────────────────────── */

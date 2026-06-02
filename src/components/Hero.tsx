@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, Download, Check, Sparkles } from 'lucide-react';
 import { TypeWriter } from './TypeWriter';
-import meImg from '../assets/me.png';
+import meImg from '../assets/saud.jpeg';
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

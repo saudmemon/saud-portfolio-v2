@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Star, Layers, Compass, Code2 } from 'lucide-react';
 
-// Custom premium SVG illustrations representing the projects (can be replaced by images):
-import myaiImg from '../assets/myai.svg';
-import iotImg from '../assets/iot.svg';
-import mlsaImg from '../assets/mlsa.svg';
-import nexusImg from '../assets/nexus.svg';
-import taskImg from '../assets/taskmaster.svg';
+// Local PNG assets uploaded by the user:
+import myaiImg from '../assets/Ai.png';
+import iotImg from '../assets/IOT.png';
+import mlsaImg from '../assets/MLSA.png';
+import nexusImg from '../assets/BLOG.png';
+import taskImg from '../assets/Task.png';
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -153,20 +153,17 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
               whileInView="visible"
               viewport={{ once: true }}
               className={`group relative rounded-2xl overflow-hidden border border-text-primary/5 bg-bg-secondary/50 transition-all duration-500 ${
-                recruiterMode ? 'border-primary/25 shadow-lg shadow-primary/5 ring-1 ring-primary/5' : ''
+                recruiterMode ? 'border-primary/30 ring-1 ring-primary/10' : ''
               }`}
             >
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-xl bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20" />
-
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="aspect-[16/10] lg:aspect-auto relative overflow-hidden">
+                <div className="aspect-[16/10] lg:aspect-auto relative overflow-hidden border-b lg:border-b-0 lg:border-r border-text-primary/5 bg-bg-main">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 opacity-50 group-hover:opacity-70"
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-bg-secondary via-bg-secondary/60 to-transparent" />
                 </div>
 
                 <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
@@ -270,14 +267,13 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
                   className="glass-card flex flex-col justify-between group relative overflow-hidden"
                 >
                   {/* Card Image */}
-                  <div className="aspect-[16/9] w-full overflow-hidden relative">
+                  <div className="aspect-[16/9] w-full overflow-hidden relative border-b border-text-primary/5 bg-bg-main">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-750 opacity-40 group-hover:opacity-60"
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-750"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-bg-main/90 to-transparent" />
                   </div>
 
                   {/* Content */}
