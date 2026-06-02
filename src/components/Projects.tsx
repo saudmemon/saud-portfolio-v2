@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Star, Layers, Compass, Code2 } from 'lucide-react';
 
+// We will assume you save the attached images into src/assets with these names:
+import myaiImg from '../assets/myai.png';
+import iotImg from '../assets/iot.png';
+import mlsaImg from '../assets/mlsa.png';
+import nexusImg from '../assets/nexus.png';
+import taskImg from '../assets/taskmaster.png';
+
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -15,9 +22,9 @@ const featuredProjects = [
     category: 'Frontend · AI Integration',
     description: 'A fully functional conversational AI application inspired by ChatGPT. Integrated with the Groq API (Llama 3.3) for blazing-fast responses. Features real-time streaming, markdown rendering, multi-conversation history with localStorage, and voice recognition.',
     tech: ['React.js', 'Vite', 'Groq API', 'Vanilla CSS', 'localStorage', 'Web Speech API'],
-    link: 'https://my-ai-chat-saud.vercel.app/', // Realistic link or fallback
-    github: 'https://github.com/saudmemon/my-ai-chat',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=800',
+    link: 'https://myai-chat-sepia.vercel.app/',
+    github: 'https://github.com/saudmemon/myai-chat',
+    image: myaiImg,
     status: 'Completed',
     bullets: [
       'Built a fully functional AI chat application utilizing React.js, Vite, and Groq API.',
@@ -32,7 +39,7 @@ const featuredProjects = [
     tech: ['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'JWT', 'bcrypt', 'RESTful API'],
     link: '#',
     github: 'https://github.com/saudmemon/secure-iot-gateway',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800',
+    image: iotImg,
     status: 'In Progress (FYP)',
     bullets: [
       'Developing monitoring platform for real-time secure IoT gateways.',
@@ -51,7 +58,7 @@ const otherProjects = [
     tech: ['React.js', 'Vite', 'Vanilla CSS', 'Framer Motion'],
     link: 'https://mlsa-szabist.vercel.app/',
     github: 'https://github.com/saudmemon/mlsa-website-redesign',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=600',
+    image: mlsaImg,
   },
   {
     title: 'Stack Blogging Platform',
@@ -61,7 +68,7 @@ const otherProjects = [
     tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'Quill.js'],
     link: 'https://blog-platform-theta-two.vercel.app/',
     github: 'https://github.com/saudmemon/blog-platform',
-    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600',
+    image: nexusImg,
   },
   {
     title: 'Task Management Tool',
@@ -71,7 +78,7 @@ const otherProjects = [
     tech: ['Next.js', 'Node.js', 'Express.js', 'MongoDB Atlas', 'JWT'],
     link: 'https://task-management-frontend-rose-rho.vercel.app/login',
     github: 'https://github.com/saudmemon/task-management-frontend',
-    image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=600',
+    image: taskImg,
   }
 ];
 
