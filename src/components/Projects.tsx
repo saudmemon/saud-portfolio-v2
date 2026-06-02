@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Star, Layers, Compass, Code2 } from 'lucide-react';
 
-// We will assume you save the attached images into src/assets with these names:
-import myaiImg from '../assets/myai.png';
-import iotImg from '../assets/iot.png';
-import mlsaImg from '../assets/mlsa.png';
-import nexusImg from '../assets/nexus.png';
-import taskImg from '../assets/taskmaster.png';
+// Custom premium SVG illustrations representing the projects (can be replaced by images):
+import myaiImg from '../assets/myai.svg';
+import iotImg from '../assets/iot.svg';
+import mlsaImg from '../assets/mlsa.svg';
+import nexusImg from '../assets/nexus.svg';
+import taskImg from '../assets/taskmaster.svg';
 
 const GithubIcon = ({ size = 18 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
