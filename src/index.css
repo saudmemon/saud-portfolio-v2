@@ -212,3 +212,89 @@ body::before {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+
+/* ─── Infinite Marquee ────────────────────────────────── */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 1.5rem;
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content.reverse {
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/* ─── Mobile Accessibility ─────────────────────────────── */
+/* Ensure all interactive elements have minimum 44x44px touch target */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Safe area padding for notched phones */
+.container {
+  padding-left: max(1.25rem, env(safe-area-inset-left));
+  padding-right: max(1.25rem, env(safe-area-inset-right));
+}
+
+/* Focus visible outline for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Remove outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile text size safety */
+@media (max-width: 640px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}

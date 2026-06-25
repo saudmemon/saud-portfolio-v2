@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { SmoothScroll } from './components/SmoothScroll';
 import { ScrollProgress } from './components/ScrollProgress';
 import { Navbar } from './components/Navbar';
@@ -37,19 +37,6 @@ const SectionSkeleton = () => (
 );
 
 function App() {
-  const [recruiterMode, setRecruiterMode] = useState(() => {
-    return localStorage.getItem('recruiter-mode') === 'true';
-  });
-
-  useEffect(() => {
-    localStorage.setItem('recruiter-mode', String(recruiterMode));
-    if (recruiterMode) {
-      document.documentElement.classList.add('recruiter-active');
-    } else {
-      document.documentElement.classList.remove('recruiter-active');
-    }
-  }, [recruiterMode]);
-
   return (
     <>
       <Loader />
@@ -59,22 +46,22 @@ function App() {
       <SmoothScroll>
         <div className="min-h-screen relative overflow-x-hidden font-sans">
           <ScrollProgress />
-          <Navbar recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
+          <Navbar />
           <main>
-            <Hero recruiterMode={recruiterMode} setRecruiterMode={setRecruiterMode} />
-            <About recruiterMode={recruiterMode} />
-            <Experience recruiterMode={recruiterMode} />
+            <Hero />
+            <About />
+            <Experience />
             <Suspense fallback={<SectionSkeleton />}>
-              <Projects recruiterMode={recruiterMode} />
+              <Projects />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
-              <Skills recruiterMode={recruiterMode} />
+              <Skills />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
-              <Education recruiterMode={recruiterMode} />
+              <Education />
             </Suspense>
             <Suspense fallback={<SectionSkeleton />}>
-              <Contact recruiterMode={recruiterMode} />
+              <Contact />
             </Suspense>
           </main>
           <Footer />
@@ -85,4 +72,3 @@ function App() {
 }
 
 export default App;
-

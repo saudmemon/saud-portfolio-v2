@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Mail, Download, Check, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Mail, Download, Check } from 'lucide-react';
 import { TypeWriter } from './TypeWriter';
 import meImg from '../assets/saud.jpeg';
 
@@ -38,12 +38,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const } },
 };
 
-interface HeroProps {
-  recruiterMode: boolean;
-  setRecruiterMode: (mode: boolean) => void;
-}
-
-export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
+export const Hero = () => {
   const [downloadState, setDownloadState] = useState<'idle' | 'preparing' | 'downloading' | 'completed'>('idle');
   const [downloadProgress, setDownloadProgress] = useState(0);
 
@@ -79,7 +74,10 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 md:pt-28">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-28 pb-16 md:pt-36">
+      {/* Dynamic Animated Grid Backdrop */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(178,129,53,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(178,129,53,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
+      
       <div className="container relative z-10">
         <motion.div
           variants={stagger}
@@ -87,24 +85,36 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
           animate="visible"
           className="flex flex-col items-center text-center max-w-4xl mx-auto"
         >
-          {/* Profile Image & Status Badge */}
+          {/* Pulsing Status Badge */}
+          <motion.div
+            variants={fadeUp}
+            className="mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-green-500/5 border border-green-500/20 text-green-600 text-xs font-semibold tracking-wide shadow-sm"
+          >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            Available for Internships & Junior Roles
+          </motion.div>
+
+          {/* Profile Image & Status Rings */}
           <motion.div variants={fadeUp} className="mb-8 relative group">
             <div className="relative">
               <motion.div
-                className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden relative z-10 ring-2 ring-white/10 ring-offset-4 ring-offset-bg-main"
+                className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden relative z-10 ring-2 ring-primary/20 ring-offset-4 ring-offset-bg-main"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
               >
                 <img
                   src={meImg}
-                  alt="Saud Ahmed"
-                  className="w-full h-full object-cover"
+                  alt="Saud Ahmed Memon — Frontend Developer"
+                  className="w-full h-full object-cover select-none"
                   loading="eager"
                 />
               </motion.div>
 
               {/* Status Dot */}
-              <span className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-bg-main z-20 animate-pulse" title="Available Immediately" />
+              <span className="absolute bottom-2 right-2 w-4.5 h-4.5 bg-green-500 rounded-full border-3 border-bg-main z-20 shadow-md shadow-black/10" title="Available for opportunities" />
 
               {/* Decorative rotation rings */}
               <motion.div
@@ -119,62 +129,29 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
               />
 
               {/* Ambient Glow */}
-              <div className="absolute inset-[-20px] rounded-full bg-primary/10 blur-2xl -z-10" />
+              <div className="absolute inset-[-20px] rounded-full bg-primary/8 blur-2xl -z-10" />
             </div>
           </motion.div>
 
-          {/* Quick Toggle Action */}
-          <motion.div variants={fadeUp} className="mb-4">
-            <button
-              onClick={() => setRecruiterMode(!recruiterMode)}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${recruiterMode
-                  ? 'bg-primary/20 text-primary border-primary/40 shadow-glow shadow-primary/20'
-                  : 'bg-white/5 text-text-secondary border-white/10 hover:border-primary/30 hover:text-text-primary'
-                }`}
-            >
-              <Sparkles size={12} className={recruiterMode ? 'text-primary fill-primary animate-pulse' : ''} />
-              {recruiterMode ? 'Recruiter Mode Active' : 'Are you a recruiter? Click here'}
-            </button>
-          </motion.div>
-
           {/* Main Title Heading */}
-          <AnimatePresence mode="wait">
-            {recruiterMode ? (
-              <motion.h1
-                key="recruiter-title"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.05] tracking-tight"
-                style={{ letterSpacing: '-0.04em' }}
-              >
-                Hi Recruiter! I build <span className="gradient-text">high-speed MERN apps</span>
-              </motion.h1>
-            ) : (
-              <motion.h1
-                key="default-title"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.05] tracking-tight"
-                style={{ letterSpacing: '-0.04em' }}
-              >
-                I build <span className="gradient-text">fast, modern websites</span> for businesses
-              </motion.h1>
-            )}
-          </AnimatePresence>
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight text-text-primary"
+            style={{ letterSpacing: '-0.04em' }}
+          >
+            I build <span className="gradient-text">fast, modern frontend</span> experiences
+          </motion.h1>
 
           {/* Subtitle / Typewriter */}
-          <motion.div variants={fadeUp} className="mb-6 h-8">
-            <p className="text-lg md:text-xl text-text-secondary font-medium">
+          <motion.div variants={fadeUp} className="mb-6 h-8 flex items-center justify-center">
+            <p className="text-lg md:text-xl text-text-secondary font-medium tracking-wide">
               <TypeWriter
                 words={[
-                  'React.js / Node.js Developer',
-                  'MERN Stack Specialist',
-                  'BS Computer Science (Final Semester)',
+                  'Frontend React Developer',
+                  'React.js & Next.js Specialist',
+                  'BS Computer Science (Final Year)',
                   'Technical Coordinator @ MLSA',
+                  'Seeking SWE Intern / Junior Dev Role',
                 ]}
                 speed={60}
                 deleteSpeed={30}
@@ -183,127 +160,61 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
             </p>
           </motion.div>
 
-          {/* Recruiter Quick Summary Card */}
-          <AnimatePresence>
-            {recruiterMode && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as const }}
-                className="w-full glass-card p-6 md:p-8 mb-10 max-w-2xl text-left relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 p-3 bg-primary/10 rounded-bl-2xl text-[10px] uppercase font-bold tracking-wider text-primary">
-                  Recruiter Dashboard
-                </div>
-                <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
-                  <Sparkles size={16} className="text-primary" /> Executive Summary
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  Final-semester BS CS student with hands-on front-end experience (React, JavaScript, Tailwind) and full-stack familiarity (MERN, SQL, AWS). Proven leadership as Technical Coordinator for Microsoft Learn Student Ambassadors (MLSA) and Campus Ambassador for AIESEC. Ready for entry-level Software Engineering roles or internships immediately.
-                </p>
+          {/* Description */}
+          <motion.p
+            variants={fadeUp}
+            className="text-text-secondary text-base md:text-lg mb-10 max-w-xl leading-relaxed font-medium"
+          >
+            Final-year BS CS student specializing in Frontend Web Development. Hands-on experience building highly interactive, component-driven UIs with React.js, JavaScript, and CSS. Seeking internship or junior frontend developer roles.
+          </motion.p>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-                  {[
-                    { label: 'Role Interest', val: 'SWE / Frontend' },
-                    { label: 'Key Stack', val: 'React, Node, Mongo, SQL' },
-                    { label: 'Availability', val: 'Immediate (Islamabad/Remote)' },
-                  ].map((stat, i) => (
-                    <div key={i} className="bg-white/5 border border-white/5 p-3.5 rounded-xl">
-                      <p className="text-[10px] text-text-muted uppercase font-bold tracking-wide mb-1">{stat.label}</p>
-                      <p className="text-sm font-semibold text-text-primary">{stat.val}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    onClick={handleDownloadResume}
-                    className="flex-grow sm:flex-grow-0 group px-5 py-3 rounded-xl bg-primary text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 min-w-[190px]"
-                  >
-                    {downloadState === 'idle' && (
-                      <>
-                        Download Resume <Download size={14} className="group-hover:translate-y-0.5 transition-transform" />
-                      </>
-                    )}
-                    {downloadState === 'preparing' && 'Optimizing Bundle...'}
-                    {downloadState === 'downloading' && `Downloading (${downloadProgress}%)`}
-                    {downloadState === 'completed' && (
-                      <>
-                        Saved Successfully <Check size={14} />
-                      </>
-                    )}
-                  </button>
-                  <a
-                    href="https://wa.me/923068292658"
-                    target="_blank"
-                    className="flex-grow sm:flex-grow-0 px-5 py-3 rounded-xl bg-[#25D366] text-white font-semibold text-xs flex items-center justify-center gap-2 hover:bg-[#20ba59] transition-all"
-                  >
-                    WhatsApp Chat <WhatsAppIcon size={14} />
-                  </a>
-                  <a
-                    href="mailto:saudmemon581@gmail.com"
-                    className="flex-grow sm:flex-grow-0 px-5 py-3 rounded-xl border border-white/10 hover:border-primary/30 text-text-primary hover:bg-primary/5 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
-                  >
-                    Send Email <Mail size={14} />
-                  </a>
-                </div>
-
-                {/* Progress bar overlay */}
-                {downloadState !== 'idle' && (
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
-                    <motion.div
-                      className="h-full bg-primary"
-                      style={{ width: `${downloadProgress}%` }}
-                      transition={{ ease: 'easeInOut' }}
-                    />
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Fallback descriptions */}
-          <AnimatePresence mode="wait">
-            {!recruiterMode && (
-              <motion.p
-                key="default-desc"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                variants={fadeUp}
-                className="text-text-muted text-base md:text-lg mb-10 max-w-xl leading-relaxed"
-              >
-                Crafting clean, performant web experiences with modern technologies and thoughtful design. Focused on writing robust components, clean code, and fast web loads.
-              </motion.p>
-            )}
-          </AnimatePresence>
-
-          {/* Action CTAs (Standard view fallback) */}
-          {!recruiterMode && (
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-col sm:flex-row items-center gap-4 mb-14"
+          {/* Action CTAs */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full max-w-md"
+          >
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto group px-8 py-3.5 rounded-xl bg-primary hover:bg-primary-hover text-white font-semibold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 min-h-[44px]"
             >
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="group px-7 py-3.5 rounded-xl bg-primary text-white font-semibold text-sm flex items-center gap-2.5 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300"
-              >
-                View My Work
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-7 py-3.5 rounded-xl text-sm font-semibold text-text-primary border border-text-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
-              >
-                Let's Talk
-              </motion.a>
-            </motion.div>
-          )}
+              View My Work
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+
+            {/* Download Resume Button */}
+            <motion.button
+              type="button"
+              onClick={handleDownloadResume}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label="Download Resume PDF"
+              className="w-full sm:w-auto group px-8 py-3.5 rounded-xl border border-black/10 bg-white/60 hover:bg-white/90 text-text-primary text-sm font-semibold flex items-center justify-center gap-2.5 transition-all duration-300 min-h-[44px] min-w-[180px] shadow-sm shadow-black/[0.01]"
+            >
+              {downloadState === 'idle' && (
+                <>
+                  Download CV <Download size={15} className="group-hover:translate-y-0.5 transition-transform" />
+                </>
+              )}
+              {downloadState === 'preparing' && 'Preparing...'}
+              {downloadState === 'downloading' && `Downloading (${downloadProgress}%)`}
+              {downloadState === 'completed' && (
+                <>
+                  Saved! <Check size={15} className="text-green-600" />
+                </>
+              )}
+            </motion.button>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm font-semibold text-text-secondary border border-black/10 bg-white/40 hover:bg-white/60 transition-all duration-300 min-h-[44px] flex items-center justify-center"
+            >
+              Let's Talk
+            </motion.a>
+          </motion.div>
 
           {/* Social Links */}
           <motion.div
@@ -320,9 +231,10 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
                 key={label}
                 href={href}
                 target={href.startsWith('mailto') ? undefined : '_blank'}
-                whileHover={{ scale: 1.1, y: -2 }}
+                rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                whileHover={{ scale: 1.08, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary/10 border border-text-primary/5 hover:border-primary/20 transition-all duration-300"
+                className="w-11 h-11 rounded-xl flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary/5 border border-black/[0.04] bg-white/50 hover:border-primary/20 transition-all duration-300 shadow-sm shadow-black/[0.01]"
                 aria-label={label}
               >
                 <Icon size={18} />
@@ -332,11 +244,10 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
         </motion.div>
       </div>
 
-      {/* Background Gradients */}
-      <div className="absolute top-[15%] right-[-15%] w-[500px] h-[500px] bg-primary/8 blur-[120px] rounded-full -z-10" />
-      <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-secondary/8 blur-[120px] rounded-full -z-10" />
-      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[200px] rounded-full -z-10" />
+      {/* Modern Background Blur Mesh Spots */}
+      <div className="absolute top-[15%] right-[-15%] w-[450px] h-[450px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[-10%] w-[350px] h-[350px] bg-secondary/5 blur-[120px] rounded-full -z-10 pointer-events-none" />
+      <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-primary/4 blur-[180px] rounded-full -z-10 pointer-events-none" />
     </section>
   );
 };
-

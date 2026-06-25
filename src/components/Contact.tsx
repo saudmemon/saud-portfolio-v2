@@ -35,11 +35,7 @@ const FloatingField = ({
   );
 };
 
-interface ContactProps {
-  recruiterMode: boolean;
-}
-
-export const Contact = ({ recruiterMode }: ContactProps) => {
+export const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -116,8 +112,6 @@ export const Contact = ({ recruiterMode }: ContactProps) => {
 
             <div className="space-y-5">
               {contactInfo.map((item, i) => {
-                const isWhatsApp = item.label.includes('WhatsApp');
-                const isGlow = isWhatsApp && recruiterMode;
 
                 return (
                   <motion.div
@@ -131,11 +125,7 @@ export const Contact = ({ recruiterMode }: ContactProps) => {
                       <a
                         href={item.href}
                         target={item.href.startsWith('mailto') ? undefined : '_blank'}
-                        className={`flex items-center gap-4 group p-2.5 rounded-2xl transition-all duration-300 ${
-                          isGlow
-                            ? 'bg-[#25D366]/10 border border-[#25D366]/30 shadow-glow shadow-[#25D366]/10'
-                            : 'hover:bg-white/[0.03] border border-transparent'
-                        }`}
+                      className="flex items-center gap-4 group p-2.5 rounded-2xl transition-all duration-300 hover:bg-white/[0.03] border border-transparent"
                       >
                         <div
                           className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 flex-shrink-0"
@@ -144,17 +134,10 @@ export const Contact = ({ recruiterMode }: ContactProps) => {
                             color: item.color,
                           }}
                         >
-                          <item.icon size={18} className={isGlow ? 'animate-pulse' : ''} />
+                          <item.icon size={18} />
                         </div>
                         <div>
-                          <div className="flex items-center gap-1.5">
-                            <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
-                            {isGlow && (
-                              <span className="px-1.5 py-0.5 text-[8px] font-extrabold uppercase bg-[#25D366]/20 text-[#25D366] rounded">
-                                Preferred Fast Path
-                              </span>
-                            )}
-                          </div>
+                          <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{item.label}</p>
                           <p className="text-sm font-semibold text-text-primary group-hover:text-primary transition-colors">{item.value}</p>
                         </div>
                       </a>

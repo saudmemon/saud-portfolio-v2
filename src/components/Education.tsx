@@ -3,20 +3,27 @@ import { GraduationCap, Award, ExternalLink, Calendar, BookOpen } from 'lucide-r
 
 const education = [
   {
-    degree: 'BS Computer Science (Final Semester)',
-    institution: 'Shaheed Zulfiqar Ali Bhutto University, Islamabad',
+    degree: 'BS Computer Science (Final Year)',
+    institution: 'Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology, Islamabad',
     year: 'Feb 2023 – Feb 2027',
     bullets: ['Actively participated in various university activities and technical events.']
   },
   {
-    degree: 'Higher Secondary Certificate (HSC), Grade A1',
+    degree: 'Intermediate (HSC)',
     institution: 'GBDC, Bhan Saeedabad',
-    year: 'March 2020 – September 2022',
+    year: 'Sep 2020 – Jun 2022',
     bullets: []
   }
 ];
 
 const certifications = [
+  {
+    title: 'IBM Introduction to HTML, CSS & JavaScript',
+    issuer: 'Coursera',
+    date: '2023',
+    link: null,
+    bullets: []
+  },
   {
     title: 'Introduction to AI',
     issuer: 'Coursera',
@@ -28,27 +35,9 @@ const certifications = [
     title: 'Master AI for Web App Development',
     issuer: 'Simplilearn',
     date: '2024',
-    link: 'https://www.simplilearn.com/skillup',
+    link: 'https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI1MDY5IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvOTM2OTU2OF85MTE0MjAzMTc2Mjc5MjI0MDc1Mi5wbmciLCJ1c2VybmFtZSI6IlNhdWQgQWhtZWQgTWVtb24ifQ%3D%3D',
     bullets: []
   },
-  {
-    title: 'Artificial Intelligence & Data Science Technical Training',
-    issuer: 'SZABIST University, Islamabad',
-    date: '2024',
-    link: null,
-    bullets: []
-  },
-  {
-    title: 'FORGE Certificate',
-    issuer: 'AIESEC in Islamabad',
-    date: '2025',
-    link: null,
-    bullets: [
-      'Successfully participated in the FORGE program organized by AIESEC in Islamabad.',
-      'Contributed to activities aligned with United Nations Sustainable Development Goals (SDGs).',
-      'Developed leadership, teamwork, and problem-solving skills through structured youth engagement sessions.'
-    ]
-  }
 ];
 
 const fadeUp = {
@@ -60,14 +49,11 @@ const fadeUp = {
   }),
 };
 
-interface EducationProps {
-  recruiterMode: boolean;
-}
-
-export const Education = ({ recruiterMode }: EducationProps) => {
+export const Education = () => {
   return (
-    <section id="education" className="relative">
-      <div className="container">
+    <section id="education" className="relative py-20 md:py-28 lg:py-32 overflow-hidden">
+      <div className="container relative z-10">
+        
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
           <motion.span
@@ -100,7 +86,7 @@ export const Education = ({ recruiterMode }: EducationProps) => {
             className="space-y-6"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shadow-sm">
                 <GraduationCap size={20} />
               </div>
               <h3 className="text-xl font-bold tracking-tight text-text-primary">Education History</h3>
@@ -114,23 +100,25 @@ export const Education = ({ recruiterMode }: EducationProps) => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="glass-card p-6 md:p-7 border-l-[3px] border-l-primary/40 hover:border-l-primary transition-all duration-300"
+                className="glass-card p-6 md:p-7 border border-black/[0.04] bg-white/60 hover:border-primary/20 shadow-md shadow-black/[0.01] hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 relative overflow-hidden group"
               >
+                <div className="absolute left-0 top-0 bottom-0 w-[3.5px] bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
+                
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                  <h4 className="text-[15px] font-bold text-text-primary">{item.degree}</h4>
-                  <span className="text-[10px] font-semibold text-text-secondary bg-text-primary/[0.04] px-3 py-1.5 rounded-lg border border-text-primary/5 w-fit flex items-center gap-1">
+                  <h4 className="text-[15px] font-bold text-text-primary group-hover:text-primary transition-colors duration-300">{item.degree}</h4>
+                  <span className="text-[10px] font-bold text-text-secondary bg-black/[0.02] px-3 py-1.5 rounded-lg border border-black/5 w-fit flex items-center gap-1">
                     <Calendar size={10} className="text-primary" />
                     {item.year}
                   </span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium mb-3 flex items-center gap-1.5">
-                  <BookOpen size={12} className="text-primary" />
+                <p className="text-xs text-text-secondary font-semibold mb-3 flex items-center gap-1.5">
+                  <BookOpen size={12} className="text-primary flex-shrink-0" />
                   {item.institution}
                 </p>
                 {item.bullets.length > 0 && (
-                  <ul className="space-y-1 pl-1">
+                  <ul className="space-y-1.5 pl-1">
                     {item.bullets.map((b, idx) => (
-                      <li key={idx} className="text-xs text-text-secondary flex items-start gap-1.5">
+                      <li key={idx} className="text-xs text-text-secondary flex items-start gap-1.5 font-medium leading-relaxed">
                         <span className="text-primary mt-0.5">•</span>
                         <span>{b}</span>
                       </li>
@@ -151,7 +139,7 @@ export const Education = ({ recruiterMode }: EducationProps) => {
             className="space-y-6"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+              <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shadow-sm">
                 <Award size={20} />
               </div>
               <h3 className="text-xl font-bold tracking-tight text-text-primary">Certifications & Courses</h3>
@@ -159,7 +147,6 @@ export const Education = ({ recruiterMode }: EducationProps) => {
 
             {certifications.map((item, i) => {
               const hasLink = !!item.link;
-              const isGlow = hasLink && recruiterMode;
 
               return (
                 <motion.div
@@ -169,41 +156,27 @@ export const Education = ({ recruiterMode }: EducationProps) => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className={`glass-card p-6 md:p-7 border-l-[3px] border-l-secondary/40 hover:border-l-secondary transition-all duration-300 ${
-                    isGlow ? 'border-secondary/50 shadow-md shadow-secondary/5' : ''
-                  }`}
+                  className="glass-card p-6 md:p-7 border border-black/[0.04] bg-white/60 hover:border-secondary/20 shadow-md shadow-black/[0.01] hover:shadow-lg hover:shadow-secondary/5 transition-all duration-300 relative overflow-hidden group"
                 >
+                  <div className="absolute left-0 top-0 bottom-0 w-[3.5px] bg-secondary/30 group-hover:bg-secondary transition-colors duration-300" />
+                  
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-3">
                     <div>
-                      <h4 className="text-[15px] font-bold text-text-primary mb-1">{item.title}</h4>
-                      <p className="text-xs text-text-secondary font-medium">{item.issuer}</p>
+                      <h4 className="text-[15px] font-bold text-text-primary mb-1 group-hover:text-secondary transition-colors duration-300">{item.title}</h4>
+                      <p className="text-xs text-text-secondary font-semibold">{item.issuer}</p>
                     </div>
-                    <span className="text-[10px] font-semibold text-text-secondary bg-text-primary/[0.04] px-3 py-1.5 rounded-lg border border-text-primary/5 w-fit flex items-center gap-1 self-start sm:self-auto">
+                    <span className="text-[10px] font-bold text-text-secondary bg-black/[0.02] px-3 py-1.5 rounded-lg border border-black/5 w-fit flex items-center gap-1 self-start sm:self-auto">
                       <Calendar size={10} className="text-secondary" />
                       {item.date}
                     </span>
                   </div>
 
-                  {item.bullets.length > 0 && (
-                    <ul className="space-y-1.5 pl-1 mb-4">
-                      {item.bullets.map((b, idx) => (
-                        <li key={idx} className="text-xs text-text-secondary flex items-start gap-1.5 leading-relaxed">
-                          <span className="text-secondary mt-0.5">•</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
                   {hasLink && (
                     <a
                       href={item.link!}
                       target="_blank"
-                      className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all duration-300 ${
-                        isGlow
-                          ? 'bg-secondary text-white shadow-lg shadow-secondary/20 hover:bg-secondary/90'
-                          : 'bg-white/5 border border-white/5 text-text-secondary hover:text-secondary hover:border-secondary/20 hover:bg-secondary/5'
-                      }`}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-3.5 py-2 rounded-xl transition-all duration-300 bg-secondary/5 border border-secondary/10 text-secondary hover:bg-secondary hover:text-white min-h-[36px]"
                     >
                       Verify Credentials <ExternalLink size={10} />
                     </a>
@@ -217,4 +190,3 @@ export const Education = ({ recruiterMode }: EducationProps) => {
     </section>
   );
 };
-

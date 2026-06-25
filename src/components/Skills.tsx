@@ -1,70 +1,39 @@
 import { motion } from 'framer-motion';
 import { GitHubStats } from './GitHubStats';
-import { Code, Server, Cloud, Cpu } from 'lucide-react';
 
-const skillCategories = [
-  {
-    title: 'Languages',
-    icon: Code,
-    color: 'var(--primary)',
-    items: [
-      { name: 'JavaScript', hot: true },
-      { name: 'TypeScript', hot: false },
-      { name: 'HTML/CSS', hot: false },
-      { name: 'SQL (PostgreSQL)', hot: true }
-    ]
-  },
-  {
-    title: 'Frameworks & Stacks',
-    icon: Server,
-    color: 'var(--secondary)',
-    items: [
-      { name: 'React.js', hot: true },
-      { name: 'Node.js / Express', hot: true },
-      { name: 'MERN Stack', hot: true },
-      { name: 'REST APIs', hot: false },
-      { name: 'Groq AI API', hot: false },
-      { name: 'Web Speech API', hot: false }
-    ]
-  },
-  {
-    title: 'Cloud & DevOps',
-    icon: Cloud,
-    color: 'var(--accent)',
-    items: [
-      { name: 'AWS', hot: false },
-      { name: 'Render', hot: false },
-      { name: 'Vercel', hot: false },
-      { name: 'Secure Deployment', hot: true }
-    ]
-  },
-  {
-    title: 'Tools & Concepts',
-    icon: Cpu,
-    color: 'var(--primary)',
-    items: [
-      { name: 'Git & GitHub', hot: false },
-      { name: 'Figma', hot: false },
-      { name: 'OOP / DSA', hot: true },
-      { name: 'Troubleshooting', hot: false }
-    ]
-  }
+const track1 = [
+  { name: 'JavaScript (ES6+)', color: 'var(--primary)' },
+  { name: 'HTML5', color: 'var(--secondary)' },
+  { name: 'CSS3', color: 'var(--accent)' },
+  { name: 'C++', color: 'var(--primary)' },
+  { name: 'Git & GitHub', color: 'var(--secondary)' },
+  { name: 'Figma', color: 'var(--accent)' },
+  { name: 'Webpack', color: 'var(--primary)' },
+  { name: 'Software Architecture', color: 'var(--secondary)' },
+  { name: 'Agile', color: 'var(--accent)' }
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const } },
-};
+const track2 = [
+  { name: 'React.js', color: 'var(--secondary)' },
+  { name: 'Next.js', color: 'var(--primary)' },
+  { name: 'Bootstrap', color: 'var(--accent)' },
+  { name: 'MongoDB', color: 'var(--primary)' },
+  { name: 'NoSQL', color: 'var(--secondary)' },
+  { name: 'PostgreSQL', color: 'var(--accent)' },
+  { name: 'Vercel', color: 'var(--primary)' },
+  { name: 'Render', color: 'var(--secondary)' },
+  { name: 'DSA & OOP', color: 'var(--accent)' },
+  { name: 'CI/CD', color: 'var(--primary)' },
+  { name: 'SDLC', color: 'var(--secondary)' },
+  { name: 'Responsive Web Design', color: 'var(--accent)' }
+];
 
-interface SkillsProps {
-  recruiterMode: boolean;
-}
-
-export const Skills = ({ recruiterMode }: SkillsProps) => {
+export const Skills = () => {
   return (
-    <section id="skills" className="relative">
-      <div className="container">
-        {/* Header */}
+    <section id="skills" className="relative overflow-hidden py-20 md:py-28 lg:py-32">
+      <div className="container relative z-10">
+        
+        {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <motion.span
             initial={{ opacity: 0 }}
@@ -83,75 +52,95 @@ export const Skills = ({ recruiterMode }: SkillsProps) => {
           >
             Tools I <span className="gradient-text">use</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-text-secondary max-w-md mx-auto text-sm md:text-base mt-2"
+          >
+            A curated list of languages, frameworks, databases, and methodologies that I use to bring ideas to life.
+          </motion.p>
         </div>
 
-        {/* Skills Categorized Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {skillCategories.map((category, idx) => {
-            const Icon = category.icon;
-            return (
-              <motion.div
-                key={category.title}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="glass-card p-6 md:p-8 relative overflow-hidden"
-              >
-                {/* Visual Glow */}
+        {/* Screen Reader Only (Accessibility Fallback) */}
+        <div className="sr-only">
+          <h3>Languages & Tools</h3>
+          <ul>
+            {track1.map((item) => <li key={item.name}>{item.name}</li>)}
+          </ul>
+          <h3>Frameworks & Core Competencies</h3>
+          <ul>
+            {track2.map((item) => <li key={item.name}>{item.name}</li>)}
+          </ul>
+        </div>
+
+        {/* Sliding Skills Marquees */}
+        <div className="space-y-6 mb-16 relative">
+          {/* Subtle Ambient Background Glowing Spots */}
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-40 bg-primary/5 blur-[100px] rounded-full -z-10" />
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-40 bg-secondary/5 blur-[100px] rounded-full -z-10" />
+
+          {/* Marquee Track 1 (Moves Left) */}
+          <div className="marquee-container">
+            <div className="marquee-content">
+              {/* Original Track */}
+              {track1.map((item, idx) => (
                 <div
-                  className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-2xl opacity-10 transition-all duration-500"
-                  style={{ backgroundColor: category.color }}
-                />
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{
-                      backgroundColor: `color-mix(in srgb, ${category.color} 15%, transparent)`,
-                      color: category.color,
-                    }}
-                  >
-                    <Icon size={18} />
-                  </div>
-                  <h3 className="text-base font-bold text-text-primary">{category.title}</h3>
+                  key={`t1-${idx}`}
+                  className="flex items-center gap-3 px-6 py-3.5 rounded-2xl glass-card text-sm font-semibold tracking-wide text-text-primary border border-black/[0.04] bg-white/70 hover:border-primary/20 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 cursor-default flex-shrink-0"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: item.color }} />
+                  {item.name}
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {category.items.map((skill, j) => {
-                    const isHot = skill.hot && recruiterMode;
-                    return (
-                      <motion.span
-                        key={skill.name}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: j * 0.03, duration: 0.25 }}
-                        whileHover={{ scale: 1.03, y: -1 }}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-medium border transition-all duration-300 cursor-default flex items-center gap-1.5 ${
-                          isHot
-                            ? 'bg-primary/10 border-primary/40 text-primary shadow-glow shadow-primary/15'
-                            : 'bg-text-primary/[0.02] border-text-primary/[0.05] text-text-secondary hover:text-text-primary hover:bg-white/5 hover:border-text-primary/10'
-                        }`}
-                      >
-                        {skill.name}
-                        {isHot && (
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                        )}
-                      </motion.span>
-                    );
-                  })}
+              ))}
+              {/* Duplicate Track */}
+              {track1.map((item, idx) => (
+                <div
+                  key={`t1-dup-${idx}`}
+                  aria-hidden="true"
+                  className="flex items-center gap-3 px-6 py-3.5 rounded-2xl glass-card text-sm font-semibold tracking-wide text-text-primary border border-black/[0.04] bg-white/70 hover:border-primary/20 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 cursor-default flex-shrink-0"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: item.color }} />
+                  {item.name}
                 </div>
-              </motion.div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
+
+          {/* Marquee Track 2 (Moves Right / Reverse) */}
+          <div className="marquee-container">
+            <div className="marquee-content reverse">
+              {/* Original Track */}
+              {track2.map((item, idx) => (
+                <div
+                  key={`t2-${idx}`}
+                  className="flex items-center gap-3 px-6 py-3.5 rounded-2xl glass-card text-sm font-semibold tracking-wide text-text-primary border border-black/[0.04] bg-white/70 hover:border-primary/20 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 cursor-default flex-shrink-0"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: item.color }} />
+                  {item.name}
+                </div>
+              ))}
+              {/* Duplicate Track */}
+              {track2.map((item, idx) => (
+                <div
+                  key={`t2-dup-${idx}`}
+                  aria-hidden="true"
+                  className="flex items-center gap-3 px-6 py-3.5 rounded-2xl glass-card text-sm font-semibold tracking-wide text-text-primary border border-black/[0.04] bg-white/70 hover:border-primary/20 transition-all duration-300 hover:scale-102 hover:shadow-lg hover:shadow-primary/5 cursor-default flex-shrink-0"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: item.color }} />
+                  {item.name}
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* GitHub Contributions */}
+        {/* GitHub Contributions Section */}
         <GitHubStats />
+
       </div>
     </section>
   );
 };
-

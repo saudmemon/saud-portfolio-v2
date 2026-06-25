@@ -88,11 +88,7 @@ const fadeUp = {
   }),
 };
 
-interface ProjectsProps {
-  recruiterMode: boolean;
-}
-
-export const Projects = ({ recruiterMode }: ProjectsProps) => {
+export const Projects = () => {
   const [filter, setFilter] = useState<'All' | 'Full-Stack' | 'Frontend'>('All');
 
   const filteredProjects = projects.filter((p) => {
@@ -101,8 +97,9 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
   });
 
   return (
-    <section id="projects" className="relative">
-      <div className="container">
+    <section id="projects" className="relative py-20 md:py-28 lg:py-32 overflow-hidden">
+      <div className="container relative z-10">
+        
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-20">
           <div className="max-w-lg">
@@ -128,34 +125,42 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="section-description md:text-right md:max-w-sm"
+            className="section-description md:text-right md:max-w-sm font-medium"
           >
             Production-grade web applications built with rigorous architecture, speed, and sleek design.
           </motion.p>
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
           <div className="flex items-center gap-2">
             <Compass size={16} className="text-secondary" />
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">Selected Projects</h3>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-text-secondary">Filter Projects</h3>
           </div>
 
-          {/* Interactive Filters */}
-          <div className="flex items-center gap-1.5 bg-white/5 border border-white/5 p-1 rounded-xl w-fit">
-            {(['All', 'Full-Stack', 'Frontend'] as const).map((t) => (
-              <button
-                key={t}
-                onClick={() => setFilter(t)}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${
-                  filter === t
-                    ? 'bg-primary text-white shadow-md shadow-primary/25'
-                    : 'text-text-muted hover:text-text-primary hover:bg-white/5'
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+          {/* Interactive Filters with sliding layout pill */}
+          <div className="flex items-center gap-1 bg-black/[0.02] border border-black/5 p-1 rounded-2xl w-fit relative">
+            {(['All', 'Full-Stack', 'Frontend'] as const).map((t) => {
+              const isActive = filter === t;
+              return (
+                <button
+                  key={t}
+                  onClick={() => setFilter(t)}
+                  className={`relative px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 min-h-[38px] z-10 ${
+                    isActive ? 'text-white' : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                >
+                  {t}
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-project-tab"
+                      className="absolute inset-0 bg-primary rounded-xl -z-10 shadow-md shadow-primary/20"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -172,18 +177,17 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
                 whileInView="visible"
                 exit={{ opacity: 0, scale: 0.95 }}
                 viewport={{ once: true }}
-                className={`glass-card flex flex-col justify-between group relative overflow-hidden transition-all duration-500 ${
-                  recruiterMode && project.featured ? 'border-primary/45 ring-1 ring-primary/10' : ''
-                }`}
+                className="glass-card flex flex-col justify-between group relative overflow-hidden border border-black/[0.04] bg-white/60 shadow-md shadow-black/[0.01] hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500"
               >
-                {/* Card Image */}
-                <div className="aspect-[16/9] w-full overflow-hidden relative border-b border-text-primary/5 bg-bg-main">
+                {/* Card Image with zoom-hover effect */}
+                <div className="aspect-[16/9] w-full overflow-hidden relative border-b border-black/5 bg-bg-main">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-750"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out select-none"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
 
                 {/* Content */}
@@ -201,43 +205,41 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
                       )}
                     </div>
                     
-                    <h4 className="text-lg font-bold mb-3 tracking-tight group-hover:text-primary transition-colors duration-300">
+                    <h4 className="text-lg font-bold mb-3 tracking-tight group-hover:text-primary transition-colors duration-300 text-text-primary">
                       {project.title}
                     </h4>
                     
-                    <p className="text-xs text-text-secondary leading-relaxed mb-5">
+                    <p className="text-xs text-text-secondary leading-relaxed mb-5 font-semibold">
                       {project.description}
                     </p>
 
-                    {/* Recruiter highlights bullets inside card */}
-                    {recruiterMode && project.bullets && (
-                      <ul className="mb-5 space-y-1.5 pl-1 border-l border-primary/20">
-                        {project.bullets.map((b, bIdx) => (
-                          <li key={bIdx} className="text-[10px] text-text-secondary leading-relaxed flex items-start gap-1">
-                            <span className="text-primary mt-0.5">•</span>
-                            <span>{b}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
                     <div className="flex flex-wrap gap-1.5 mb-6">
                       {project.tech.map((t) => (
-                        <span key={t} className="text-[9px] font-bold tracking-wider px-2.5 py-1 bg-white/5 border border-text-primary/5 rounded-md text-text-secondary">
+                        <span key={t} className="text-[9px] font-bold tracking-wider px-2.5 py-1 bg-black/[0.02] border border-black/5 rounded-md text-text-secondary">
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 pt-3 border-t border-white/5">
+                  <div className="flex items-center gap-4 pt-3 border-t border-black/5">
                     {project.github && (
-                      <a href={project.github} target="_blank" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-text-secondary hover:text-primary transition-colors">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-text-secondary hover:text-primary transition-colors min-h-[44px]"
+                      >
                         <Code2 size={13} /> Code
                       </a>
                     )}
-                    {project.link !== '#' && (
-                      <a href={project.link} target="_blank" className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-text-secondary hover:text-primary transition-colors">
+                    {project.link && project.link !== '#' && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-text-secondary hover:text-primary transition-colors min-h-[44px]"
+                      >
                         <ArrowUpRight size={13} /> Live
                       </a>
                     )}
@@ -251,4 +253,3 @@ export const Projects = ({ recruiterMode }: ProjectsProps) => {
     </section>
   );
 };
-

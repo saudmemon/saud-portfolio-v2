@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
-import { Mail, Heart } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Heart, ArrowUp } from 'lucide-react';
 
 const GithubIcon = ({ size = 16 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -23,47 +24,116 @@ const socials = [
 ];
 
 export const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative py-12 border-t border-white/[0.04]">
-      <div className="container">
+    <footer className="relative py-16 border-t border-black/5 bg-white/40 overflow-hidden">
+      <div className="container relative z-10">
+        
+        {/* Footer Top: Multi-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-black/5 pb-12 mb-8">
+          
+          {/* Brand/Profile Intro */}
+          <div className="space-y-3">
+            <a href="#home" className="flex items-center gap-1 w-fit group">
+              <span className="text-xl font-bold tracking-tight text-text-primary group-hover:text-primary transition-colors">
+                saud
+              </span>
+              <span className="text-primary font-bold text-xl">.</span>
+            </a>
+            <p className="text-xs text-text-secondary leading-relaxed font-semibold max-w-xs">
+              Frontend React Developer seeking Software Engineer Intern & Junior roles. Building fast, clean, and accessible web experiences.
+            </p>
+          </div>
+
+          {/* Quick Navigation Links */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-text-primary">Navigation</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <a href="#home" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">Home</a>
+              <a href="#about" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">About</a>
+              <a href="#experience" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">Experience</a>
+              <a href="#projects" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">Projects</a>
+              <a href="#skills" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">Skills</a>
+              <a href="#contact" className="text-xs font-semibold text-text-secondary hover:text-primary transition-colors">Contact</a>
+            </div>
+          </div>
+
+          {/* Social Links & Mail */}
+          <div className="space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-text-primary">Let's Connect</h4>
+            <p className="text-xs font-semibold text-text-secondary">Email: saudmemon581@gmail.com</p>
+            <div className="flex items-center gap-2.5">
+              {socials.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('mailto') ? undefined : '_blank'}
+                  rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                  className="w-9.5 h-9.5 rounded-xl flex items-center justify-center text-text-secondary hover:text-primary hover:bg-primary/5 border border-black/[0.04] bg-white/50 transition-all duration-300 shadow-sm"
+                  aria-label={label}
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex items-center gap-1.5 text-sm text-text-muted"
+            className="flex items-center gap-1.5 text-xs text-text-secondary font-semibold"
           >
             <span>Built with</span>
-            <Heart size={14} className="text-primary fill-primary" />
+            <Heart size={13} className="text-primary fill-primary animate-pulse" />
             <span>by</span>
-            <span className="font-semibold text-text-primary">Saud Ahmed</span>
+            <span className="font-bold text-text-primary">Saud Ahmed</span>
           </motion.div>
 
-          {/* Socials */}
-          <div className="flex items-center gap-2">
-            {socials.map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith('mailto') ? undefined : '_blank'}
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-text-muted hover:text-primary hover:bg-primary/10 transition-all duration-300"
-                aria-label={label}
-              >
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
-
           {/* Right */}
-          <p className="text-xs text-text-muted">
+          <p className="text-[11px] font-bold text-text-muted">
             &copy; {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
       </div>
 
-      {/* Footer ambient glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200px] h-[100px] bg-primary/5 blur-[80px] rounded-full -z-10" />
+      {/* Ambient background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[250px] h-[120px] bg-primary/5 blur-[80px] rounded-full -z-10" />
+
+      {/* Floating Scroll-to-Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            whileHover={{ scale: 1.06, y: -2 }}
+            whileTap={{ scale: 0.94 }}
+            className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20 hover:shadow-primary/30 border border-primary-hover transition-all min-h-[44px] min-w-[44px] cursor-pointer"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={18} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };
