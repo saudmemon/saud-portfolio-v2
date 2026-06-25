@@ -59,12 +59,12 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
           if (prev >= 100) {
             clearInterval(interval);
             setDownloadState('completed');
-            
+
             // Create a physical link to download the PDF from the public folder
             const link = document.createElement('a');
-            link.href = '/Saud_Ahmed_Resume.pdf';
+            link.href = '/Saud_Ahmed.pdf';
             link.target = '_blank';
-            link.download = 'Saud_Ahmed_Resume.pdf';
+            link.download = 'Saud_Ahmed.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -127,11 +127,10 @@ export const Hero = ({ recruiterMode, setRecruiterMode }: HeroProps) => {
           <motion.div variants={fadeUp} className="mb-4">
             <button
               onClick={() => setRecruiterMode(!recruiterMode)}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${
-                recruiterMode
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${recruiterMode
                   ? 'bg-primary/20 text-primary border-primary/40 shadow-glow shadow-primary/20'
                   : 'bg-white/5 text-text-secondary border-white/10 hover:border-primary/30 hover:text-text-primary'
-              }`}
+                }`}
             >
               <Sparkles size={12} className={recruiterMode ? 'text-primary fill-primary animate-pulse' : ''} />
               {recruiterMode ? 'Recruiter Mode Active' : 'Are you a recruiter? Click here'}
